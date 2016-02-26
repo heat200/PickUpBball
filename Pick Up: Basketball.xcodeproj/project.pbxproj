@@ -12,6 +12,8 @@
 		7DDA95881C7FF091007DD3D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA95861C7FF091007DD3D3 /* Main.storyboard */; };
 		7DDA958A1C7FF091007DD3D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA95891C7FF091007DD3D3 /* Assets.xcassets */; };
 		7DDA958D1C7FF091007DD3D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA958B1C7FF091007DD3D3 /* LaunchScreen.storyboard */; };
+		7DDA95951C7FFD22007DD3D3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95941C7FFD22007DD3D3 /* SignUpViewController.swift */; };
+		7DDA95971C7FFD62007DD3D3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		7DDA95891C7FF091007DD3D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DDA958C1C7FF091007DD3D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DDA958E1C7FF091007DD3D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7DDA95941C7FFD22007DD3D3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */,
 				7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */,
+				7DDA95941C7FFD22007DD3D3 /* SignUpViewController.swift */,
+				7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */,
 				7DDA95861C7FF091007DD3D3 /* Main.storyboard */,
 				7DDA958B1C7FF091007DD3D3 /* LaunchScreen.storyboard */,
 				7DDA95891C7FF091007DD3D3 /* Assets.xcassets */,
@@ -136,8 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DDA95951C7FFD22007DD3D3 /* SignUpViewController.swift in Sources */,
 				7DDA95851C7FF091007DD3D3 /* LoginViewController.swift in Sources */,
 				7DDA95831C7FF091007DD3D3 /* AppDelegate.swift in Sources */,
+				7DDA95971C7FFD62007DD3D3 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

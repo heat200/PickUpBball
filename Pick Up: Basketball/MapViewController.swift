@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  MapViewController.swift
 //  Pick Up: Basketball
 //
 //  Created by Bryan Mazariegos on 2/25/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,4 +19,3 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 }
-
