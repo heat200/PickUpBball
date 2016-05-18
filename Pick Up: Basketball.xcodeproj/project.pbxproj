@@ -12,8 +12,13 @@
 		7DDA95881C7FF091007DD3D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA95861C7FF091007DD3D3 /* Main.storyboard */; };
 		7DDA958A1C7FF091007DD3D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA95891C7FF091007DD3D3 /* Assets.xcassets */; };
 		7DDA958D1C7FF091007DD3D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA958B1C7FF091007DD3D3 /* LaunchScreen.storyboard */; };
-		7DDA95951C7FFD22007DD3D3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95941C7FFD22007DD3D3 /* SignUpViewController.swift */; };
 		7DDA95971C7FFD62007DD3D3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */; };
+		7DE11FC81CDEBC8E0090FCB1 /* LocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE11FC71CDEBC8E0090FCB1 /* LocalViewController.swift */; };
+		7DE11FCA1CDEC6510090FCB1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE11FC91CDEC6510090FCB1 /* ProfileViewController.swift */; };
+		7DE11FCC1CDEC84C0090FCB1 /* FriendsActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE11FCB1CDEC84C0090FCB1 /* FriendsActivityViewController.swift */; };
+		7DE11FCE1CDEC8D80090FCB1 /* HotspotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE11FCD1CDEC8D80090FCB1 /* HotspotsViewController.swift */; };
+		7DE11FD01CDECE4E0090FCB1 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE11FCF1CDECE4E0090FCB1 /* StartScreenViewController.swift */; };
+		7DE11FD21CDECFA80090FCB1 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE11FD11CDECFA80090FCB1 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +29,13 @@
 		7DDA95891C7FF091007DD3D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7DDA958C1C7FF091007DD3D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7DDA958E1C7FF091007DD3D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7DDA95941C7FFD22007DD3D3 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7DE11FC71CDEBC8E0090FCB1 /* LocalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalViewController.swift; sourceTree = "<group>"; };
+		7DE11FC91CDEC6510090FCB1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		7DE11FCB1CDEC84C0090FCB1 /* FriendsActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsActivityViewController.swift; sourceTree = "<group>"; };
+		7DE11FCD1CDEC8D80090FCB1 /* HotspotsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotspotsViewController.swift; sourceTree = "<group>"; };
+		7DE11FCF1CDECE4E0090FCB1 /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
+		7DE11FD11CDECFA80090FCB1 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +69,13 @@
 			isa = PBXGroup;
 			children = (
 				7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */,
+				7DE11FCF1CDECE4E0090FCB1 /* StartScreenViewController.swift */,
 				7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */,
-				7DDA95941C7FFD22007DD3D3 /* SignUpViewController.swift */,
+				7DE11FD11CDECFA80090FCB1 /* MainViewController.swift */,
+				7DE11FC91CDEC6510090FCB1 /* ProfileViewController.swift */,
+				7DE11FCD1CDEC8D80090FCB1 /* HotspotsViewController.swift */,
+				7DE11FC71CDEBC8E0090FCB1 /* LocalViewController.swift */,
+				7DE11FCB1CDEC84C0090FCB1 /* FriendsActivityViewController.swift */,
 				7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */,
 				7DDA95861C7FF091007DD3D3 /* Main.storyboard */,
 				7DDA958B1C7FF091007DD3D3 /* LaunchScreen.storyboard */,
@@ -142,10 +157,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DDA95951C7FFD22007DD3D3 /* SignUpViewController.swift in Sources */,
+				7DE11FCA1CDEC6510090FCB1 /* ProfileViewController.swift in Sources */,
+				7DE11FCC1CDEC84C0090FCB1 /* FriendsActivityViewController.swift in Sources */,
+				7DE11FCE1CDEC8D80090FCB1 /* HotspotsViewController.swift in Sources */,
+				7DE11FD01CDECE4E0090FCB1 /* StartScreenViewController.swift in Sources */,
 				7DDA95851C7FF091007DD3D3 /* LoginViewController.swift in Sources */,
 				7DDA95831C7FF091007DD3D3 /* AppDelegate.swift in Sources */,
+				7DE11FC81CDEBC8E0090FCB1 /* LocalViewController.swift in Sources */,
 				7DDA95971C7FFD62007DD3D3 /* MapViewController.swift in Sources */,
+				7DE11FD21CDECFA80090FCB1 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,9 +280,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Pick Up: Basketball/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PickUpBBall.Pick-Up--Basketball";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PikUp.Pik-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -274,9 +294,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Pick Up: Basketball/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.PickUpBBall.Pick-Up--Basketball";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.PikUp.Pik-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -301,6 +321,7 @@
 				7DDA95931C7FF091007DD3D3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
