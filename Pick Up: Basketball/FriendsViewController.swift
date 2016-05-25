@@ -85,13 +85,13 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         cell.friendName.text = friendActivityCell.friendName
         
-        if friendActivityCell.friendName.characters.count > 10 {
-            cell.checkedIntoLabel.text = "->"
+        if friendActivityCell.friendName.characters.count > 14 {
+            cell.checkedIntoLabel.text = " --> "
             dispatch_async(dispatch_get_main_queue(), {
-                cell.checkedIntoLabel.sizeToFit()
-                cell.friendName.sizeToFit()
-                cell.checkedIntoLabel.frame.origin.x += 50
-                cell.friendName.frame.origin.y += 2
+                //cell.checkedIntoLabel.sizeToFit()
+                //cell.friendName.sizeToFit()
+                //cell.checkedIntoLabel.frame.origin.x += 50
+                //cell.friendName.frame.origin.y += 2
             })
         }
         
