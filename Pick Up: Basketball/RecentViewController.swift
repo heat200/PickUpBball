@@ -60,7 +60,7 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
         let photo1 = UIImage(named:"person")!
         let recentActivityInfoHolder1 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,people:["Chris Vila"],dateEffective:"05/25/2016 at 16:55:00")
         let recentActivityInfoHolder2 = RecentActivityInfoHolder(location: "AAA",thumb: photo1,people:["Lebron James","Chris Bosh","Dwayne Wade"],dateEffective:"05/23/2016 at 14:00:00")
-        let recentActivityInfoHolder3 = RecentActivityInfoHolder(location: "LA Fitness",thumb: photo1,people:["Pedro Alarcon","Micheal Miranda", ""],dateEffective:"05/05/2016 at 10:45:00")
+        let recentActivityInfoHolder3 = RecentActivityInfoHolder(location: "LA Fitness",thumb: photo1,people:["Pedro Alarcon","Micheal Miranda"],dateEffective:"05/05/2016 at 10:45:00")
         let recentActivityInfoHolder4 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,people:[],dateEffective:"05/04/2016 at 12:30:00")
         recentActivityHolders += [recentActivityInfoHolder1,recentActivityInfoHolder2,recentActivityInfoHolder3,recentActivityInfoHolder4]
         print("Sample Info Loaded")

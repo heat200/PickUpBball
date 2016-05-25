@@ -508,7 +508,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFE-YJ-Hbk">
-                                                    <rect key="frame" x="286" y="0.0" width="26" height="14"/>
+                                                    <rect key="frame" x="286" y="8" width="26" height="14"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.36942909779999999" green="0.2801597831" blue="0.54459134620000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -536,7 +536,7 @@
                                                 <constraint firstItem="2lY-Pv-SgY" firstAttribute="top" secondItem="etM-YP-FPn" secondAttribute="topMargin" constant="11" id="jni-Vm-c0c"/>
                                                 <constraint firstItem="kTQ-sK-rCd" firstAttribute="top" secondItem="etM-YP-FPn" secondAttribute="topMargin" constant="12" id="l4Y-MI-caT"/>
                                                 <constraint firstItem="MFE-YJ-Hbk" firstAttribute="trailing" secondItem="etM-YP-FPn" secondAttribute="trailingMargin" id="qX1-8d-dRf"/>
-                                                <constraint firstItem="MFE-YJ-Hbk" firstAttribute="top" secondItem="etM-YP-FPn" secondAttribute="topMargin" constant="-8" id="xnr-ej-kOn"/>
+                                                <constraint firstItem="MFE-YJ-Hbk" firstAttribute="top" secondItem="etM-YP-FPn" secondAttribute="topMargin" id="xnr-ej-kOn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
