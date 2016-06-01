@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7D2E34881CFDD978003A542E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */; };
 		7D2E34891CFDD978003A542E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */; };
+		7D59F37D1CFF5467008A7C89 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */; };
+		7D59F37F1CFF54A5008A7C89 /* FriendHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */; };
+		7D59F3811CFF54BB008A7C89 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F3801CFF54BB008A7C89 /* FriendCell.swift */; };
 		7DDA95831C7FF091007DD3D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */; };
 		7DDA95851C7FF091007DD3D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */; };
 		7DDA95881C7FF091007DD3D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA95861C7FF091007DD3D3 /* Main.storyboard */; };
@@ -33,6 +36,9 @@
 		7D2633571CFDD9E900AA8344 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Pick Up Basketball/Bridging-Header.h"; sourceTree = "<group>"; };
 		7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendHolder.swift; sourceTree = "<group>"; };
+		7D59F3801CFF54BB008A7C89 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		7DDA957F1C7FF091007DD3D3 /* Pick Up: Basketball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pick Up: Basketball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +109,9 @@
 				7DE11FC71CDEBC8E0090FCB1 /* RecentViewController.swift */,
 				7DE8910F1CF5BE78000F80F8 /* RecentActivityCell.swift */,
 				7DE891111CF5BE92000F80F8 /* RecentActivityInfoHolder.swift */,
+				7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */,
+				7D59F3801CFF54BB008A7C89 /* FriendCell.swift */,
+				7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */,
 				7DE11FC91CDEC6510090FCB1 /* ProfileViewController.swift */,
 				7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */,
 				7DDA95861C7FF091007DD3D3 /* Main.storyboard */,
@@ -186,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D59F37D1CFF5467008A7C89 /* FriendsListViewController.swift in Sources */,
 				7DE891121CF5BE92000F80F8 /* RecentActivityInfoHolder.swift in Sources */,
 				7DE891081CF59691000F80F8 /* FriendActivityInfoHolder.swift in Sources */,
 				7DE11FCA1CDEC6510090FCB1 /* ProfileViewController.swift in Sources */,
@@ -198,9 +208,11 @@
 				7DDA95831C7FF091007DD3D3 /* AppDelegate.swift in Sources */,
 				7DE11FC81CDEBC8E0090FCB1 /* RecentViewController.swift in Sources */,
 				7DDA95971C7FFD62007DD3D3 /* MapViewController.swift in Sources */,
+				7D59F3811CFF54BB008A7C89 /* FriendCell.swift in Sources */,
 				7DE891101CF5BE78000F80F8 /* RecentActivityCell.swift in Sources */,
 				7DE8910A1CF59852000F80F8 /* FriendActivityCell.swift in Sources */,
 				7DE11FD21CDECFA80090FCB1 /* MainViewController.swift in Sources */,
+				7D59F37F1CFF54A5008A7C89 /* FriendHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,6 +14,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var recentViewContainer:UIView!
     @IBOutlet var hotspotsViewContainer:UIView!
     @IBOutlet var friendsViewContainer:UIView!
+    @IBOutlet var friendsListViewContainer:UIView!
     @IBOutlet var navbar:UINavigationBar!
     @IBOutlet var statusbar:UIView!
     
@@ -32,7 +33,9 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         
         if PageToShow == "Home" {
             pageControl.hidden = false
+            friendsListViewContainer.hidden = true
         } else if PageToShow == "Friends" {
+            friendsListViewContainer.hidden = false
             pageControl.hidden = true
             navbar.backItem?.title = PageToShow
             recentViewContainer.hidden = true
@@ -92,6 +95,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
             recentViewContainer.frame.origin.x += animationSpeed
             hotspotsViewContainer.frame.origin.x += animationSpeed
             friendsViewContainer.frame.origin.x += animationSpeed
+            friendsListViewContainer.frame.origin.x += animationSpeed
         } else if !settingsMenuShouldShow && settingsContainer.bounds.width > 0 {
             var newFrameContainer = settingsContainer.frame
             newFrameContainer.size.width -= animationSpeed
@@ -108,6 +112,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
             recentViewContainer.frame.origin.x -= animationSpeed
             hotspotsViewContainer.frame.origin.x -= animationSpeed
             friendsViewContainer.frame.origin.x -= animationSpeed
+            friendsListViewContainer.frame.origin.x -= animationSpeed
         }
         
         if pageControl.selectedSegmentIndex == 0 && !pageControl.hidden {

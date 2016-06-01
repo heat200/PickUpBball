@@ -19,12 +19,6 @@ class MenuViewController: UIViewController {
             FBSDKAccessToken.setCurrentAccessToken(nil)
             FBSDKProfile.setCurrentProfile(nil)
             self.dismissViewControllerAnimated(true, completion: nil)
-            /*
-            let LoginVC = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
-            self.view.window!.rootViewController?.presentViewController(LoginVC, animated: true, completion: {
-                self.dismissViewControllerAnimated(true, completion: nil)
-            })
-            */
         }
     }
     
