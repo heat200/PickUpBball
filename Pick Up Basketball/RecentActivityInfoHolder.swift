@@ -10,14 +10,12 @@ import UIKit
 
 class RecentActivityInfoHolder {
     var profilePic = UIImage()
-    var locationName = ""
-    var peopleMet = [String]()
+    var personMet = String()
     var dateCheckedIn = NSDate()
     
-    init(location: String,thumb:UIImage,people: [String],dateEffective:String) {
+    init(location: String,thumb:UIImage,person: String,dateEffective:String) {
         profilePic = thumb
-        locationName = location
-        peopleMet = people
+        personMet = person
         let date = NSDateFormatter()
         date.dateFormat = "MM/dd/yyyy 'at' HH:mm:ss"
         dateCheckedIn = date.dateFromString(dateEffective)!

@@ -10,14 +10,12 @@ import UIKit
 
 class RecentActivityCell: UITableViewCell {
     
-    @IBOutlet weak var playedAtLabel: UILabel!
-    @IBOutlet weak var locationName: UILabel!
-    @IBOutlet weak var andMetLabel: UILabel!
+    @IBOutlet weak var metLabel: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var postTime: UILabel!
-    @IBOutlet weak var peopleMetLabel: UILabel!
+    @IBOutlet weak var personMetLabel: UILabel!
     
-    var otherInformation:RecentActivityInfoHolder = RecentActivityInfoHolder(location: "",thumb: UIImage(),people:["Bobby Cram","Billy Joe"],dateEffective:"01/01/2016 at  17:15:00")
+    var otherInformation:RecentActivityInfoHolder = RecentActivityInfoHolder(location: "",thumb: UIImage(),person:"Billy Joe",dateEffective:"01/01/2016 at  17:15:00")
     
     override func awakeFromNib() {
         super.awakeFromNib()

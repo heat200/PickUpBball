@@ -16,7 +16,6 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleInfo()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(animated:Bool) {
@@ -29,7 +28,6 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -58,42 +56,26 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func loadSampleInfo() {
         let photo1 = UIImage(named:"person")!
-        let recentActivityInfoHolder1 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,people:["Chris Vila"],dateEffective:"05/25/2016 at 16:55:00")
-        let recentActivityInfoHolder2 = RecentActivityInfoHolder(location: "AAA",thumb: photo1,people:["Lebron James","Chris Bosh","Dwayne Wade"],dateEffective:"05/23/2016 at 14:00:00")
-        let recentActivityInfoHolder3 = RecentActivityInfoHolder(location: "LA Fitness",thumb: photo1,people:["Pedro Alarcon","Michael Miranda"],dateEffective:"05/05/2016 at 10:45:00")
-        let recentActivityInfoHolder4 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,people:[],dateEffective:"05/04/2016 at 12:30:00")
+        let recentActivityInfoHolder1 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,person:"Chris Vila",dateEffective:"05/25/2016 at 16:55:00")
+        let recentActivityInfoHolder2 = RecentActivityInfoHolder(location: "AAA",thumb: photo1,person:"Lebron James",dateEffective:"05/23/2016 at 14:00:00")
+        let recentActivityInfoHolder3 = RecentActivityInfoHolder(location: "LA Fitness",thumb: photo1,person:"Pedro Alarcon",dateEffective:"05/05/2016 at 10:45:00")
+        let recentActivityInfoHolder4 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,person:"Billy Bob",dateEffective:"05/04/2016 at 12:30:00")
         recentActivityHolders += [recentActivityInfoHolder1,recentActivityInfoHolder2,recentActivityInfoHolder3,recentActivityInfoHolder4]
-        print("Sample Info Loaded")
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Adding " + String(recentActivityHolders.count) + " Cells to the View")
+        //print("Adding " + String(recentActivityHolders.count) + " Cells to the View")
         return recentActivityHolders.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.recentActivityTableView!.dequeueReusableCellWithIdentifier("recentActivityCell", forIndexPath: indexPath) as! RecentActivityCell
         
-        // Configure the cell...
         let recentActivityCell = recentActivityHolders[indexPath.row]
-        
-        cell.locationName.text = recentActivityCell.locationName
-        /*
-        if recentActivityCell.recentName.characters.count > 10 {
-            cell.checkedIntoLabel.text = "->"
-            dispatch_async(dispatch_get_main_queue(), {
-                cell.checkedIntoLabel.sizeToFit()
-                cell.recentName.sizeToFit()
-                cell.checkedIntoLabel.frame.origin.x += 50
-                cell.recentName.frame.origin.y += 2
-            })
-        }
-        */
         
         cell.profilePic.image = recentActivityCell.profilePic
         var timePassed = (NSDate(timeIntervalSinceNow: 0).timeIntervalSinceDate(recentActivityCell.dateCheckedIn))
@@ -129,17 +111,8 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         
         cell.postTime.text = timeAsString
-        if recentActivityCell.peopleMet.count == 0 {
-            cell.peopleMetLabel.text = "No one was met :("
-        } else if recentActivityCell.peopleMet.count == 1 {
-            cell.peopleMetLabel.text = recentActivityCell.peopleMet[0]
-        } else if recentActivityCell.peopleMet.count == 2 {
-            cell.peopleMetLabel.text = recentActivityCell.peopleMet[0] + " and " + recentActivityCell.peopleMet[1]
-        } else {
-            cell.peopleMetLabel.text = recentActivityCell.peopleMet[0] + ", " + recentActivityCell.peopleMet[1] + ", and others."
-        }
+        cell.personMetLabel.text = recentActivityCell.personMet
         
-        print("Propagated View")
         return cell
     }
 }

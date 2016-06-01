@@ -16,7 +16,6 @@ class HotspotsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleInfo()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(animated:Bool) {
@@ -29,7 +28,6 @@ class HotspotsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -62,7 +60,6 @@ class HotspotsViewController: UIViewController {
         let hotspotsActivityInfoHolder2 = HotspotsActivityInfoHolder(name: "Bent Tree Park",address: "13850 SW 47th St, Miami, FL 33175",thumb: photo1,rank:2,people:25)
         let hotspotsActivityInfoHolder3 = HotspotsActivityInfoHolder(name: "LA Fitness",address: "16339 SW 88th St, Miami, FL 33196",thumb: photo1,rank:3,people:20)
         hotspotsActivityHolders += [hotspotsActivityInfoHolder1,hotspotsActivityInfoHolder2,hotspotsActivityInfoHolder3]
-        print("Sample Info Loaded")
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -71,14 +68,13 @@ class HotspotsViewController: UIViewController {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Adding " + String(hotspotsActivityHolders.count) + " Cells to the View")
+        //print("Adding " + String(hotspotsActivityHolders.count) + " Cells to the View")
         return hotspotsActivityHolders.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.hotspotsActivityTableView!.dequeueReusableCellWithIdentifier("hotspotsActivityCell", forIndexPath: indexPath) as! HotspotsActivityCell
         
-        // Configure the cell...
         let hotspotsActivityCell = hotspotsActivityHolders[indexPath.row]
         
         cell.locationName.text = hotspotsActivityCell.locationName
@@ -86,7 +82,6 @@ class HotspotsViewController: UIViewController {
         cell.locationPicture.image = hotspotsActivityCell.locationPic
         cell.locationRank.text = String(hotspotsActivityCell.locationRank)
         cell.amountCheckedIn.text = String(hotspotsActivityCell.locationAmountCheckedIn)
-        print("Propagated View")
         return cell
     }
 }

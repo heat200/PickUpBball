@@ -37,6 +37,7 @@
 	<string>Pik Up</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>fb-messenger-api</string>
 		<string>fbapi</string>
 		<string>fbauth2</string>
 		<string>fbshareextension</string>

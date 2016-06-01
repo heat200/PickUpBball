@@ -16,7 +16,6 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         loadSampleInfo()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     override func viewDidAppear(animated:Bool) {
@@ -29,7 +28,6 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -64,35 +62,26 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let friendActivityInfoHolder4 = FriendActivityInfoHolder(name: "Lebron James",location: "AAA",thumb: photo1,dateEffective:"05/23/2016 at 14:00:00")
         let friendActivityInfoHolder5 = FriendActivityInfoHolder(name: "Billy Bob",location: "Bent Tree Park",thumb: photo1,dateEffective:"05/05/2016 at 10:45:00")
         friendActivityHolders += [friendActivityInfoHolder1,friendActivityInfoHolder2,friendActivityInfoHolder3,friendActivityInfoHolder4,friendActivityInfoHolder5]
-        print("Sample Info Loaded")
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Adding " + String(friendActivityHolders.count) + " Cells to the View")
+        //print("Adding " + String(friendActivityHolders.count) + " Cells to the View")
         return friendActivityHolders.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.friendActivityTableView!.dequeueReusableCellWithIdentifier("friendActivityCell", forIndexPath: indexPath) as! FriendActivityCell
         
-        // Configure the cell...
         let friendActivityCell = friendActivityHolders[indexPath.row]
         
         cell.friendName.text = friendActivityCell.friendName
         
         if friendActivityCell.friendName.characters.count > 14 {
             cell.checkedIntoLabel.text = " --> "
-            dispatch_async(dispatch_get_main_queue(), {
-                //cell.checkedIntoLabel.sizeToFit()
-                //cell.friendName.sizeToFit()
-                //cell.checkedIntoLabel.frame.origin.x += 50
-                //cell.friendName.frame.origin.y += 2
-            })
         }
         
         
@@ -131,7 +120,6 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
         
         cell.postTime.text = timeAsString
-        print("Propagated View")
         return cell
     }
 }

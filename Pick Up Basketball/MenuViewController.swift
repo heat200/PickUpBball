@@ -18,14 +18,25 @@ class MenuViewController: UIViewController {
             print("Logging out")
             FBSDKAccessToken.setCurrentAccessToken(nil)
             FBSDKProfile.setCurrentProfile(nil)
-            self.removeFromParentViewController()
+            self.dismissViewControllerAnimated(true, completion: nil)
+            /*
             let LoginVC = self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
-            self.presentViewController(LoginVC, animated: true, completion: {
-                self.removeFromParentViewController()
+            self.view.window!.rootViewController?.presentViewController(LoginVC, animated: true, completion: {
+                self.dismissViewControllerAnimated(true, completion: nil)
             })
+            */
         }
     }
     
+    @IBAction func showHomeView() {
+        delegate.updateVisibility("Home")
+    }
+    
+    @IBAction func showFriendsList() {
+        delegate.updateVisibility("Friends")
+    }
+    
+    var delegate:MenuViewControllerDelegate!
     var pictureFrameOrigin:CGPoint!
     var pictureFrameSize:CGSize!
     var nameFrameOrigin:CGPoint!
@@ -46,7 +57,7 @@ class MenuViewController: UIViewController {
             print("Could not parse JSON: \(error)")
         }
         
-        print(urlString)
+        //print(urlString)
         repFrameOrigin = userRep.frame.origin
         repFrameSize = userRep.frame.size
         nameFrameOrigin = userName.frame.origin
@@ -62,7 +73,6 @@ class MenuViewController: UIViewController {
         userRep.frame.origin = repFrameOrigin
         userRep.frame.size = repFrameSize
         userName.frame.origin = nameFrameOrigin
-        userName.frame.size = nameFrameSize
         
     }
     
@@ -73,4 +83,8 @@ class MenuViewController: UIViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
+}
+
+protocol MenuViewControllerDelegate {
+    func updateVisibility(PageToShow:String)
 }

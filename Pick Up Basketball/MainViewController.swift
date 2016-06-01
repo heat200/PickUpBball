@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var pageControl:UISegmentedControl!
     @IBOutlet var settingsContainer:UIView!
     @IBOutlet var recentViewContainer:UIView!
@@ -27,6 +27,20 @@ class MainViewController: UIViewController {
         }
     }
     
+    func updateVisibility(PageToShow:String) {
+        settingsMenuShouldShow = false
+        
+        if PageToShow == "Home" {
+            pageControl.hidden = false
+        } else if PageToShow == "Friends" {
+            pageControl.hidden = true
+            navbar.backItem?.title = PageToShow
+            recentViewContainer.hidden = true
+            hotspotsViewContainer.hidden = true
+            friendsViewContainer.hidden = true
+        }
+    }
+    
     @IBAction func hideSettingsMenuVisibility() {
         settingsMenuShouldShow = false
     }
@@ -39,12 +53,12 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         settingsContainer.bounds.size.width = 0
         NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(MainViewController.scheduledAdjustments), userInfo: nil, repeats: true)
-        // Do any additional setup after loading the view, typically from a nib.
+        let menuController = self.childViewControllers[3] as! MenuViewController
+        menuController.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -52,9 +66,6 @@ class MainViewController: UIViewController {
     }
     
     func scheduledAdjustments() {
-        //print("==============")
-        //print(settingsContainer.bounds.width)
-        //print(settingsMenuShouldShow)
         updateViews()
         updateViews()
         updateViews()
@@ -99,18 +110,22 @@ class MainViewController: UIViewController {
             friendsViewContainer.frame.origin.x -= animationSpeed
         }
         
-        if pageControl.selectedSegmentIndex == 0 {
+        if pageControl.selectedSegmentIndex == 0 && !pageControl.hidden {
             recentViewContainer.hidden = true
             hotspotsViewContainer.hidden = false
             friendsViewContainer.hidden = true
-        } else if pageControl.selectedSegmentIndex == 1 {
+        } else if pageControl.selectedSegmentIndex == 1 && !pageControl.hidden {
             recentViewContainer.hidden = true
             hotspotsViewContainer.hidden = true
             friendsViewContainer.hidden = false
-        } else if pageControl.selectedSegmentIndex == 2 {
+        } else if pageControl.selectedSegmentIndex == 2 && !pageControl.hidden {
             recentViewContainer.hidden = false
             hotspotsViewContainer.hidden = true
             friendsViewContainer.hidden = true
         }
     }
+}
+
+protocol MainViewControllerDelegate {
+    func updateVisibility()
 }
