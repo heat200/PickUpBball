@@ -901,8 +901,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" misplaced="YES" text="Chris Vila" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmX-WL-bYb">
-                                                    <rect key="frame" x="72" y="21" width="50" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Chris Vila" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OmX-WL-bYb">
+                                                    <rect key="frame" x="72" y="21" width="50" height="12"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -913,14 +913,14 @@
                                                         <constraint firstAttribute="width" secondItem="sZB-Rx-8Dm" secondAttribute="height" multiplier="1:1" id="s2K-6d-zTA"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLH-gc-CH8">
-                                                    <rect key="frame" x="286" y="8" width="26" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rep" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLH-gc-CH8">
+                                                    <rect key="frame" x="291" y="8" width="21" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.36942909779999999" green="0.2801597831" blue="0.54459134620000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" fixedFrame="YES" text="Not Checked In" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSP-h0-utS">
-                                                    <rect key="frame" x="72" y="41" width="79" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Not Checked In" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xSP-h0-utS">
+                                                    <rect key="frame" x="72" y="40" width="75" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                     <color key="textColor" red="0.36942909779999999" green="0.2801597831" blue="0.54459134620000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -933,13 +933,15 @@
                                                 <constraint firstItem="OmX-WL-bYb" firstAttribute="leading" secondItem="sZB-Rx-8Dm" secondAttribute="trailing" constant="8" id="Ern-CR-tvI"/>
                                                 <constraint firstItem="mLH-gc-CH8" firstAttribute="trailing" secondItem="0MJ-fj-NWz" secondAttribute="trailingMargin" id="Etf-VT-mAb"/>
                                                 <constraint firstItem="mLH-gc-CH8" firstAttribute="top" secondItem="0MJ-fj-NWz" secondAttribute="topMargin" id="Pwp-zf-SwB"/>
+                                                <constraint firstItem="xSP-h0-utS" firstAttribute="leading" secondItem="sZB-Rx-8Dm" secondAttribute="trailing" constant="8" id="QDG-6u-sc5"/>
+                                                <constraint firstItem="xSP-h0-utS" firstAttribute="top" secondItem="OmX-WL-bYb" secondAttribute="bottom" constant="7" id="d10-Z0-gKL"/>
                                                 <constraint firstItem="sZB-Rx-8Dm" firstAttribute="leading" secondItem="0MJ-fj-NWz" secondAttribute="leadingMargin" constant="11" id="lfu-3V-Vrz"/>
                                                 <constraint firstItem="OmX-WL-bYb" firstAttribute="top" secondItem="0MJ-fj-NWz" secondAttribute="topMargin" constant="13" id="sem-DD-tGl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <outlet property="friendLocation" destination="xSP-h0-utS" id="JxR-3L-6fo"/>
+                                            <outlet property="friendLocation" destination="xSP-h0-utS" id="Fsm-jw-56S"/>
                                             <outlet property="friendName" destination="OmX-WL-bYb" id="TUM-pM-mGD"/>
                                             <outlet property="friendPicture" destination="sZB-Rx-8Dm" id="zOa-KW-VKk"/>
                                             <outlet property="friendRep" destination="mLH-gc-CH8" id="Eq2-Na-cJQ"/>

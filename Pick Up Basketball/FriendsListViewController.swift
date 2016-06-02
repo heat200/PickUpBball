@@ -8,14 +8,17 @@
 
 import UIKit
 
+var userFriends:AnyObject!
+
 class FriendsListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet var friendsTableView:UITableView?
     
     var friendHolders = [FriendHolder]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleInfo()
+        loadInfo()
     }
     
     override func viewDidAppear(animated:Bool) {
@@ -30,16 +33,40 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
         super.didReceiveMemoryWarning()
     }
     
-    func loadSampleInfo() {
-        let photo1 = UIImage(named:"testPerson")!
-        let friendHolder1 = FriendHolder(name: "Chris Vila",rep: 10,location: "Bird Lakes Park",thumb: photo1)
-        let friendHolder2 = FriendHolder(name: "Pedro Alarcon",rep:1000,location: "LA Fitness",thumb: photo1)
-        let friendHolder3 = FriendHolder(name: "Bryan Mazariegos",rep: 50,location: "Not Checked In",thumb: photo1)
-        friendHolders += [friendHolder1,friendHolder2,friendHolder3]
-    }
-    
-    func loadRealInfo() {
-        
+    func loadInfo() {
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            
+            if ((error) != nil) {
+                print("Error: \(error)")
+            } else {
+                userFriends = result.valueForKey("data")
+                var x = 0
+                while x < userFriends.count {
+                    let friendName = userFriends[x].valueForKey("name") as? String
+                    var urlString = "https://graph.facebook.com/" + (userFriends[x].valueForKey("id") as! String) + "/picture?type=large&redirect=false"
+                    do {
+                        let dictionary = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: NSURL(string: urlString)!)!, options: .MutableLeaves)
+                        let data = dictionary.objectForKey("data")!
+                        urlString = data.valueForKey("url") as! String
+                        print(urlString)
+                    } catch {
+                        print("Could not parse JSON: \(error)")
+                    }
+                    var friendPicture:UIImage!
+                    friendPicture = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)!
+                    
+                    let friendHolder1 = FriendHolder(name: friendName!,rep: 10,location: "",thumb: friendPicture)
+                    self.friendHolders += [friendHolder1]
+                    print("Friend Count:" + String(self.friendHolders.count))
+                    x += 1
+                    
+                    if x == userFriends.count {
+                        self.friendsTableView?.reloadData()
+                    }
+                }
+            }
+        })
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -47,7 +74,7 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print("Adding " + String(friendActivityHolders.count) + " Cells to the View")
+        print("Adding " + String(friendHolders.count) + " Cells to the View")
         return friendHolders.count
     }
     

@@ -120,6 +120,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
         
         cell.postTime.text = timeAsString
+        print(indexPath)
         return cell
     }
 }
