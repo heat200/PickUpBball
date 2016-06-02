@@ -48,6 +48,10 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         settingsMenuShouldShow = false
     }
     
+    @IBAction func hideSettingsMenuVisibilityViaTap() {
+        settingsMenuShouldShow = false
+    }
+    
     @IBAction func showSettingsMenuVisibility() {
         settingsMenuShouldShow = true
     }
@@ -69,6 +73,18 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     func scheduledAdjustments() {
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
+        updateViews()
         updateViews()
         updateViews()
         updateViews()
