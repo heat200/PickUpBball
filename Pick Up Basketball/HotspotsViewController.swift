@@ -81,7 +81,7 @@ class HotspotsViewController: UIViewController {
         cell.locationAddress.text = hotspotsActivityCell.locationAddress
         cell.locationPicture.image = hotspotsActivityCell.locationPic
         cell.locationRank.text = String(hotspotsActivityCell.locationRank)
-        cell.amountCheckedIn.text = String(hotspotsActivityCell.locationAmountCheckedIn)
+        cell.amountCheckedIn.text = String(hotspotsActivityCell.locationAmountCheckedIn) + " People"
         return cell
     }
 }

@@ -51,14 +51,15 @@ class MenuViewController: UIViewController {
             print("Could not parse JSON: \(error)")
         }
         
-        //print(urlString)
+        userRep.text = String(0) + " Rep"
+        
         repFrameOrigin = userRep.frame.origin
         repFrameSize = userRep.frame.size
         nameFrameOrigin = userName.frame.origin
         nameFrameSize = userName.frame.size
         pictureFrameOrigin = userPicture.frame.origin
         pictureFrameSize = userPicture.frame.size
-        userPicture.image = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)
+        userPicture.image = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)?.roundImage()
     }
     
     override func viewDidLayoutSubviews() {

@@ -49,16 +49,14 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                         let dictionary = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: NSURL(string: urlString)!)!, options: .MutableLeaves)
                         let data = dictionary.objectForKey("data")!
                         urlString = data.valueForKey("url") as! String
-                        print(urlString)
                     } catch {
                         print("Could not parse JSON: \(error)")
                     }
                     var friendPicture:UIImage!
                     friendPicture = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)!
                     
-                    let friendHolder1 = FriendHolder(name: friendName!,rep: 10,location: "",thumb: friendPicture)
+                    let friendHolder1 = FriendHolder(name: friendName!,rep: 0,location: "",thumb: friendPicture)
                     self.friendHolders += [friendHolder1]
-                    print("Friend Count:" + String(self.friendHolders.count))
                     x += 1
                     
                     if x == userFriends.count {
@@ -74,13 +72,12 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Adding " + String(friendHolders.count) + " Cells to the View")
+        //print("Adding " + String(friendHolders.count) + " Cells to the View")
         return friendHolders.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.friendsTableView!.dequeueReusableCellWithIdentifier("friendCell", forIndexPath: indexPath) as! FriendCell
-        
         let friendCell = friendHolders[indexPath.row]
         
         cell.friendName.text = friendCell.friendName
@@ -88,11 +85,12 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
         if friendCell.locationName == "Not Checked In" || friendCell.locationName == "" {
             cell.friendLocation.text = "Not Checked In"
             cell.friendLocation.textColor = UIColor.grayColor()
+        } else {
+            cell.friendLocation.text = friendCell.locationName
         }
         
-        cell.friendLocation.text = friendCell.locationName
-        cell.friendPicture.image = friendCell.friendPic
-        cell.friendRep.text = String(friendCell.friendRep)
+        cell.friendPicture.image = friendCell.friendPic.roundImage()
+        cell.friendRep.text = String(friendCell.friendRep)  + " Rep"
         return cell
     }
 }
