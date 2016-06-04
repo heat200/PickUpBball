@@ -16,6 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let serverToCheck = defaults.stringForKey(userDefaults.lastServer) {
+            server = serverToCheck
+            print("Will Load From Last Server: " + server)
+        }
+        
         let ready = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         self.checkIfLoggedIn()
         return ready
@@ -49,6 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setValue(server, forKey: userDefaults.lastServer)
+        defaults.synchronize()
     }
 
     func checkIfLoggedIn() {

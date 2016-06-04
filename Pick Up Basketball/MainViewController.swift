@@ -8,6 +8,8 @@
 
 import UIKit
 
+var server = "10.0.0.86"
+
 class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var pageControl:UISegmentedControl!
     @IBOutlet var settingsContainer:UIView!
@@ -16,24 +18,26 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var friendsViewContainer:UIView!
     @IBOutlet var friendsListViewContainer:UIView!
     @IBOutlet var navbar:UINavigationBar!
+    @IBOutlet var menuBtn:UIButton!
     @IBOutlet var statusbar:UIView!
     
     var settingsMenuShouldShow = false
     var delegate:MainViewControllerDelegate!
     
     @IBAction func toggleSettingsMenuVisibility() {
-        delegate.updateUserData()
         if settingsContainer.bounds.width == 0 {
             settingsMenuShouldShow = true
+            menuBtn.selected = true
         } else {
             settingsMenuShouldShow = false
+            menuBtn.selected = false
         }
     }
     
     func updateVisibility(PageToShow:String) {
-        delegate.updateUserData()
         settingsMenuShouldShow = false
-        
+        menuBtn.selected = false
+        delegate.updateUserData()
         if PageToShow == "Home" {
             pageControl.hidden = false
             friendsListViewContainer.hidden = true
@@ -49,17 +53,17 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     
     @IBAction func hideSettingsMenuVisibility() {
         settingsMenuShouldShow = false
-        delegate.updateUserData()
+        menuBtn.selected = false
     }
     
     @IBAction func hideSettingsMenuVisibilityViaTap() {
         settingsMenuShouldShow = false
-        delegate.updateUserData()
+        menuBtn.selected = false
     }
     
     @IBAction func showSettingsMenuVisibility() {
         settingsMenuShouldShow = true
-        delegate.updateUserData()
+        menuBtn.selected = true
     }
     
     override func viewDidLoad() {
@@ -156,6 +160,10 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
 
 protocol MainViewControllerDelegate {
     func updateUserData()
+}
+
+struct userDefaults {
+    static let lastServer = "lastServer"
 }
 
 extension UIImage {

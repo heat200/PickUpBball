@@ -72,24 +72,14 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                     
                     var repScore = 0
                     var friendLocation = ""
-                    var server = "66.229.197.76"
                     do {
-                        var urlString2 = "http://" + server + "/PikUpServer/users/" + (userFriends[x].valueForKey("id") as! String) + "/user.json"
-                        var data = NSData(contentsOfURL: NSURL(string: urlString2)!)
+                        var data = self.updateData()
                         
                         if data == nil {
-                            if server == "10.0.0.86" {
-                                server = "66.229.197.76"
-                            } else {
-                                server = "10.0.0.86"
-                            }
-                            
-                            //print("Friends List: Switching Server To " + server)
-                            
-                            urlString2 = "http://" + server + "/PikUpServer/users/" + (userFriends[x].valueForKey("id") as! String) + "/user.json"
-                            data = NSData(contentsOfURL: NSURL(string: urlString2)!)
+                            self.switchServer()
+                            data = self.updateData()
                         } else {
-                            //print("Good 2 Go")
+                            print("Friends List: Good 2 Go")
                         }
                         
                         let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
@@ -121,6 +111,26 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
             }
         })
         self.performSelector(#selector(FriendsListViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+    }
+    
+    func switchServer() {
+        if server == "10.0.0.86" {
+            server = "66.229.197.76"
+        } else {
+            server = "10.0.0.86"
+        }
+        print("Friends List: Switching Server To " + server)
+    }
+    
+    func updateData() -> NSData? {
+        let urlString = "http://" + server + "/PikUpServer/users/" + (userData.valueForKey("id") as! String) + "/user.json"
+        print("Checking location: " + urlString)
+        var returnData = NSData(contentsOfURL: NSURL(string: urlString)!)
+        if returnData == nil {
+            switchServer()
+            returnData = updateData()
+        }
+        return returnData
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

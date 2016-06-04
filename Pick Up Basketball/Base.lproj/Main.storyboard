@@ -177,6 +177,8 @@
                                                 <rect key="frame" x="16" y="0.0" width="44" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="menuBtn2"/>
+                                                <state key="selected" image="menuBtn2-Turned"/>
+                                                <state key="highlighted" image="menuBtn2-Turned"/>
                                                 <connections>
                                                     <action selector="toggleSettingsMenuVisibility" destination="BYZ-38-t0r" eventType="touchUpInside" id="KUA-9e-g9N"/>
                                                 </connections>
@@ -198,8 +200,8 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcS-md-Tky">
-                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="573"/>
+                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JcS-md-Tky">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="573"/>
                                 <connections>
                                     <segue destination="dpI-dt-iyM" kind="embed" id="Hwr-XR-eXH"/>
                                 </connections>
@@ -254,6 +256,7 @@
                         <outlet property="friendsListViewContainer" destination="Po0-rQ-WR6" id="sTr-kG-K6N"/>
                         <outlet property="friendsViewContainer" destination="XGe-BM-Sff" id="B1R-Ix-0Mt"/>
                         <outlet property="hotspotsViewContainer" destination="sLp-4f-f1g" id="CYL-aI-BHD"/>
+                        <outlet property="menuBtn" destination="8JY-9T-zFS" id="emY-O4-C9O"/>
                         <outlet property="navbar" destination="1mc-nv-cuY" id="SUf-um-YKI"/>
                         <outlet property="pageControl" destination="XT2-22-JUg" id="5rw-6l-iZL"/>
                         <outlet property="recentViewContainer" destination="N4B-uX-p8A" id="AtK-jQ-20N"/>
@@ -664,7 +667,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OBP-yg-DMA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KT9-Ls-yBM">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="573"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="573"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="yK0-pS-doF">
@@ -673,14 +676,14 @@
                                     <constraint firstAttribute="width" secondItem="yK0-pS-doF" secondAttribute="height" multiplier="1:1" id="i3l-u0-Sqo"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91W-ju-O1u">
-                                <rect key="frame" x="50" y="70" width="30" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rep" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="91W-ju-O1u">
+                                <rect key="frame" x="50" y="70" width="170" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8N-al-uiO">
-                                <rect key="frame" x="0.0" y="132" width="0.0" height="378"/>
+                                <rect key="frame" x="0.0" y="132" width="240" height="378"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="nWS-ua-PkK">
                                         <rect key="frame" x="44" y="0.0" width="115" height="59"/>
@@ -739,7 +742,7 @@
                                             <constraint firstAttribute="width" secondItem="E8G-Wx-UZd" secondAttribute="height" multiplier="1:1" id="KJB-9m-gT8"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="N0U-Fk-Kx4">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eventsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="N0U-Fk-Kx4">
                                         <rect key="frame" x="-8" y="44" width="59" height="59"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="59" id="fju-6K-E8B"/>
@@ -870,8 +873,8 @@
                                     <constraint firstItem="aMW-oa-FwF" firstAttribute="leading" secondItem="l2P-VK-lhM" secondAttribute="leading" id="xaP-Dr-xe5"/>
                                 </constraints>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Billy Bob" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8m-ye-qqG">
-                                <rect key="frame" x="50" y="51" width="67" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Billy Bob" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8m-ye-qqG">
+                                <rect key="frame" x="50" y="51" width="170" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -994,11 +997,13 @@
     </scenes>
     <resources>
         <image name="LogoHD" width="320" height="320"/>
+        <image name="eventsIcon" width="512" height="512"/>
         <image name="friends" width="200" height="80"/>
         <image name="friendsIcon" width="512" height="512"/>
         <image name="homeIcon" width="512" height="512"/>
         <image name="hotspots" width="200" height="80"/>
         <image name="menuBtn2" width="100" height="100"/>
+        <image name="menuBtn2-Turned" width="100" height="100"/>
         <image name="messageIcon" width="512" height="512"/>
         <image name="notificationsIcon" width="512" height="512"/>
         <image name="person" width="40" height="40"/>
