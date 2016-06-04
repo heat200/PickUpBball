@@ -19,8 +19,10 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var statusbar:UIView!
     
     var settingsMenuShouldShow = false
+    var delegate:MainViewControllerDelegate!
     
     @IBAction func toggleSettingsMenuVisibility() {
+        delegate.updateUserData()
         if settingsContainer.bounds.width == 0 {
             settingsMenuShouldShow = true
         } else {
@@ -29,6 +31,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     func updateVisibility(PageToShow:String) {
+        delegate.updateUserData()
         settingsMenuShouldShow = false
         
         if PageToShow == "Home" {
@@ -46,14 +49,17 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     
     @IBAction func hideSettingsMenuVisibility() {
         settingsMenuShouldShow = false
+        delegate.updateUserData()
     }
     
     @IBAction func hideSettingsMenuVisibilityViaTap() {
         settingsMenuShouldShow = false
+        delegate.updateUserData()
     }
     
     @IBAction func showSettingsMenuVisibility() {
         settingsMenuShouldShow = true
+        delegate.updateUserData()
     }
     
     override func viewDidLoad() {
@@ -62,6 +68,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(MainViewController.scheduledAdjustments), userInfo: nil, repeats: true)
         let menuController = self.childViewControllers[3] as! MenuViewController
         menuController.delegate = self
+        self.delegate = menuController
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,7 +155,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
 }
 
 protocol MainViewControllerDelegate {
-    func updateVisibility()
+    func updateUserData()
 }
 
 extension UIImage {

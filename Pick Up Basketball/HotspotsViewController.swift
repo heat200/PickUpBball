@@ -10,11 +10,16 @@ import UIKit
 
 class HotspotsViewController: UIViewController {
     @IBOutlet var hotspotsActivityTableView:UITableView?
+    var refreshControl:UIRefreshControl!
     
     var hotspotsActivityHolders = [HotspotsActivityInfoHolder]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(HotspotsViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
+        hotspotsActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()
     }
     
@@ -30,6 +35,15 @@ class HotspotsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    func refresh() {
+        loadSampleInfo()
+        self.performSelector(#selector(HotspotsViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+    }
+    
+    func endRefresh() {
+        self.refreshControl.endRefreshing()
+        print("Completed!")
+    }
     
     func runhotspotsActivityViewerSetup(sender:AnyObject?) {
         /*
@@ -55,11 +69,13 @@ class HotspotsViewController: UIViewController {
     }
     
     func loadSampleInfo() {
+        hotspotsActivityHolders = [HotspotsActivityInfoHolder]()
         let photo1 = UIImage(named:"testPlace")!
         let hotspotsActivityInfoHolder1 = HotspotsActivityInfoHolder(name: "Bird Lakes Park",address: "14365 SW 48th Ln, Miami, FL 33175",thumb: photo1,rank:1,people:50)
         let hotspotsActivityInfoHolder2 = HotspotsActivityInfoHolder(name: "Bent Tree Park",address: "13850 SW 47th St, Miami, FL 33175",thumb: photo1,rank:2,people:25)
         let hotspotsActivityInfoHolder3 = HotspotsActivityInfoHolder(name: "LA Fitness",address: "16339 SW 88th St, Miami, FL 33196",thumb: photo1,rank:3,people:20)
         hotspotsActivityHolders += [hotspotsActivityInfoHolder1,hotspotsActivityInfoHolder2,hotspotsActivityInfoHolder3]
+        self.hotspotsActivityTableView?.reloadData()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -82,6 +98,7 @@ class HotspotsViewController: UIViewController {
         cell.locationPicture.image = hotspotsActivityCell.locationPic
         cell.locationRank.text = String(hotspotsActivityCell.locationRank)
         cell.amountCheckedIn.text = String(hotspotsActivityCell.locationAmountCheckedIn) + " People"
+        
         return cell
     }
 }

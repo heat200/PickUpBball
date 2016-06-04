@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D2E34881CFDD978003A542E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */; };
 		7D2E34891CFDD978003A542E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */; };
+		7D48DF601D012CFD000B41AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D48DF5F1D012CFD000B41AF /* Bolts.framework */; };
 		7D59F37D1CFF5467008A7C89 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */; };
 		7D59F37F1CFF54A5008A7C89 /* FriendHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */; };
 		7D59F3811CFF54BB008A7C89 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F3801CFF54BB008A7C89 /* FriendCell.swift */; };
@@ -36,6 +37,7 @@
 		7D2633571CFDD9E900AA8344 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Pick Up Basketball/Bridging-Header.h"; sourceTree = "<group>"; };
 		7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		7D48DF5F1D012CFD000B41AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendHolder.swift; sourceTree = "<group>"; };
 		7D59F3801CFF54BB008A7C89 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D48DF601D012CFD000B41AF /* Bolts.framework in Frameworks */,
 				7D2E34881CFDD978003A542E /* FBSDKCoreKit.framework in Frameworks */,
 				7D2E34891CFDD978003A542E /* FBSDKLoginKit.framework in Frameworks */,
 			);
@@ -78,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				7D2633571CFDD9E900AA8344 /* Bridging-Header.h */,
+				7D48DF5F1D012CFD000B41AF /* Bolts.framework */,
 				7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */,
 				7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */,
 				7DDA95811C7FF091007DD3D3 /* Pick Up: Basketball */,

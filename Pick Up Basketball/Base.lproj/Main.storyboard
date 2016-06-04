@@ -172,18 +172,18 @@
                                 <color key="barTintColor" red="0.00052900840651072404" green="0.0005356156974461279" blue="0.00054086538461539657" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="Etr-jM-8K6">
-                                        <barButtonItem key="leftBarButtonItem" image="menuBtn" id="YmE-Sy-kIH">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8JY-9T-zFS">
-                                                <rect key="frame" x="16" y="9" width="30" height="26"/>
+                                        <barButtonItem key="leftBarButtonItem" image="menuBtn2" id="YmE-Sy-kIH">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8JY-9T-zFS">
+                                                <rect key="frame" x="16" y="0.0" width="44" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" backgroundImage="menuBtn"/>
+                                                <state key="normal" image="menuBtn2"/>
                                                 <connections>
                                                     <action selector="toggleSettingsMenuVisibility" destination="BYZ-38-t0r" eventType="touchUpInside" id="KUA-9e-g9N"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
                                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" apportionsSegmentWidthsByContent="YES" segmentControlStyle="bar" selectedSegmentIndex="1" id="XT2-22-JUg">
-                                            <rect key="frame" x="54" y="7" width="212" height="30"/>
+                                            <rect key="frame" x="66" y="7" width="203" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="" image="hotspots" width="70"/>
@@ -691,6 +691,12 @@
                                         <state key="normal" title="Home">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="showHomeView" destination="dpI-dt-iyM" eventType="touchUpInside" id="xKW-jT-eC5"/>
                                         </connections>
@@ -701,8 +707,14 @@
                                         <state key="normal" title="Settings">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="homeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="epn-lT-Fgt">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="signoutIcon" translatesAutoresizingMaskIntoConstraints="NO" id="epn-lT-Fgt">
                                         <rect key="frame" x="-8" y="319" width="59" height="59"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="3II-Rw-XYq">
@@ -713,6 +725,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Notifications">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="homeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="E8G-Wx-UZd">
@@ -745,6 +763,12 @@
                                         <state key="normal" title="Messages">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="l2P-VK-lhM">
                                         <rect key="frame" x="44" y="56" width="137" height="36"/>
@@ -752,8 +776,14 @@
                                             <constraint firstAttribute="height" constant="36" id="vdS-Nv-zEu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Invite Friends">
+                                        <state key="normal" title="Create an Event">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="bts-OJ-RuK">
@@ -764,6 +794,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Friends">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="showFriendsList" destination="dpI-dt-iyM" eventType="touchUpInside" id="dOQ-ae-aIs"/>
@@ -777,6 +813,12 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Sign Out">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="signOut" destination="dpI-dt-iyM" eventType="touchUpInside" id="NVL-ab-Zhu"/>
@@ -956,11 +998,12 @@
         <image name="friendsIcon" width="512" height="512"/>
         <image name="homeIcon" width="512" height="512"/>
         <image name="hotspots" width="200" height="80"/>
-        <image name="menuBtn" width="44" height="44"/>
+        <image name="menuBtn2" width="100" height="100"/>
         <image name="messageIcon" width="512" height="512"/>
         <image name="notificationsIcon" width="512" height="512"/>
         <image name="person" width="40" height="40"/>
         <image name="recents" width="180" height="80"/>
         <image name="settingsIcon" width="512" height="512"/>
+        <image name="signoutIcon" width="512" height="512"/>
     </resources>
 </document>

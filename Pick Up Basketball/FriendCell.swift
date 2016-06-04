@@ -15,10 +15,13 @@ class FriendCell: UITableViewCell {
     @IBOutlet weak var friendRep: UILabel!
     @IBOutlet weak var friendLocation: UILabel!
     
+    var usualColor:UIColor!
+    
     var otherInformation:FriendHolder = FriendHolder(name: "",rep: 0,location: "",thumb: UIImage())
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        usualColor = friendLocation.textColor
         // Initialization code
     }
     

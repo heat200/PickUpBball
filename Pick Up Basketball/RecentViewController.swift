@@ -10,11 +10,16 @@ import UIKit
 
 class RecentViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet var recentActivityTableView:UITableView?
+    var refreshControl:UIRefreshControl!
     
     var recentActivityHolders = [RecentActivityInfoHolder]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(RecentViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
+        recentActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()
     }
     
@@ -30,9 +35,19 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
         super.didReceiveMemoryWarning()
     }
     
+    func refresh() {
+        loadSampleInfo()
+        self.performSelector(#selector(RecentViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+    }
+    
+    func endRefresh() {
+        self.refreshControl.endRefreshing()
+        print("Completed!")
+    }
+    
     
     func runRecentsActivityViewerSetup(sender:AnyObject?) {
-        /*
+         /*
          let dateFormatter = NSDateFormatter()
          dateFormatter.dateFormat = "MM/dd/yyyy"
          let dateBegun = (sender as! recentActivityCell).otherInformation.checkInDate
@@ -55,12 +70,14 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func loadSampleInfo() {
+        recentActivityHolders = [RecentActivityInfoHolder]()
         let photo1 = UIImage(named:"person")!
         let recentActivityInfoHolder1 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,person:"Chris Vila",dateEffective:"05/25/2016 at 16:55:00")
         let recentActivityInfoHolder2 = RecentActivityInfoHolder(location: "AAA",thumb: photo1,person:"Lebron James",dateEffective:"05/23/2016 at 14:00:00")
         let recentActivityInfoHolder3 = RecentActivityInfoHolder(location: "LA Fitness",thumb: photo1,person:"Pedro Alarcon",dateEffective:"05/05/2016 at 10:45:00")
         let recentActivityInfoHolder4 = RecentActivityInfoHolder(location: "Bird Lakes Park",thumb: photo1,person:"Billy Bob",dateEffective:"05/04/2016 at 12:30:00")
         recentActivityHolders += [recentActivityInfoHolder1,recentActivityInfoHolder2,recentActivityInfoHolder3,recentActivityInfoHolder4]
+        self.recentActivityTableView?.reloadData()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

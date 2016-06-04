@@ -22,14 +22,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if (FBSDKAccessToken.currentAccessToken() != nil) {
-            print("Logged in")
-            FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
-            returnUserData()
-        }
-    }
-    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         print("User Logged In")
         if ((error) != nil) {
@@ -48,7 +40,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
     }
     
     func returnUserData() {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":""])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             
             if ((error) != nil) {

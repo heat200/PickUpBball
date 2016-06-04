@@ -10,11 +10,16 @@ import UIKit
 
 class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet var friendActivityTableView:UITableView?
+    var refreshControl:UIRefreshControl!
     
     var friendActivityHolders = [FriendActivityInfoHolder]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(FriendsViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
+        friendActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()
     }
     
@@ -30,6 +35,15 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.didReceiveMemoryWarning()
     }
     
+    func refresh() {
+        loadSampleInfo()
+        self.performSelector(#selector(FriendsViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+    }
+    
+    func endRefresh() {
+        self.refreshControl.endRefreshing()
+        print("Completed!")
+    }
     
     func runFriendActivityViewerSetup(sender:AnyObject?) {
         /*
@@ -55,6 +69,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func loadSampleInfo() {
+        friendActivityHolders = [FriendActivityInfoHolder]()
         let photo1 = UIImage(named:"testPerson")!
         let friendActivityInfoHolder1 = FriendActivityInfoHolder(name: "Chris Vila",location: "Bird Lakes Park",thumb: photo1,dateEffective:"05/25/2016 at 17:15:00")
         let friendActivityInfoHolder2 = FriendActivityInfoHolder(name: "Pedro Alarcon",location: "LA Fitness",thumb: photo1,dateEffective:"05/25/2016 at 17:10:00")
@@ -62,6 +77,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let friendActivityInfoHolder4 = FriendActivityInfoHolder(name: "Lebron James",location: "AAA",thumb: photo1,dateEffective:"05/23/2016 at 14:00:00")
         let friendActivityInfoHolder5 = FriendActivityInfoHolder(name: "Billy Bob",location: "Bent Tree Park",thumb: photo1,dateEffective:"05/05/2016 at 10:45:00")
         friendActivityHolders += [friendActivityInfoHolder1,friendActivityInfoHolder2,friendActivityInfoHolder3,friendActivityInfoHolder4,friendActivityInfoHolder5]
+        self.friendActivityTableView?.reloadData()
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -120,6 +136,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         }
         
         cell.postTime.text = timeAsString
+        
         return cell
     }
 }

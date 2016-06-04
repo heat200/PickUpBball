@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class MenuViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet var userName:UILabel!
     @IBOutlet var userRep:UILabel!
     @IBOutlet var userPicture:UIImageView!
@@ -18,7 +18,11 @@ class MenuViewController: UIViewController {
             print("Logging out")
             FBSDKAccessToken.setCurrentAccessToken(nil)
             FBSDKProfile.setCurrentProfile(nil)
-            self.dismissViewControllerAnimated(true, completion: nil)
+            if self.presentingViewController == nil {
+                self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
+            } else {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
     
@@ -51,10 +55,8 @@ class MenuViewController: UIViewController {
             print("Could not parse JSON: \(error)")
         }
         
-        userRep.text = String(0) + " Rep"
+        updateUserData()
         
-        repFrameOrigin = userRep.frame.origin
-        repFrameSize = userRep.frame.size
         nameFrameOrigin = userName.frame.origin
         nameFrameSize = userName.frame.size
         pictureFrameOrigin = userPicture.frame.origin
@@ -68,7 +70,6 @@ class MenuViewController: UIViewController {
         userRep.frame.origin = repFrameOrigin
         userRep.frame.size = repFrameSize
         userName.frame.origin = nameFrameOrigin
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -77,6 +78,47 @@ class MenuViewController: UIViewController {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
+    }
+    
+    func updateUserData() {
+        var repScore = 0
+        var userLocation = ""
+        var server = "66.229.197.76"
+        do {
+            var urlString2 = "http://" + server + "/PikUpServer/users/" + (userData.valueForKey("id") as! String) + "/user.json"
+            var data = NSData(contentsOfURL: NSURL(string: urlString2)!)
+            
+            if data == nil {
+                if server == "10.0.0.86" {
+                    server = "66.229.197.76"
+                } else {
+                    server = "10.0.0.86"
+                }
+                
+                //print("Menu: Switching Server To " + server)
+                
+                urlString2 = "http://" + server + "/PikUpServer/users/" + (userData.valueForKey("id") as! String) + "/user.json"
+                data = NSData(contentsOfURL: NSURL(string: urlString2)!)
+            } else {
+                //print("Good 2 Go")
+            }
+            
+            let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
+            let checkedIn = dictionary.valueForKey("checkedIn") as! Bool
+            if checkedIn {
+                let data = dictionary.objectForKey("location")!
+                userLocation = (data.valueForKey("name") as! String)
+            }
+            repScore = dictionary.valueForKey("rep") as! Int
+        } catch {
+            print("Could not parse JSON: \(error)")
+        }
+        
+        print("User is at: " + userLocation)
+        userRep.text = String(repScore) + " Rep"
+        
+        repFrameOrigin = userRep.frame.origin
+        repFrameSize = userRep.frame.size
     }
 }
 
