@@ -199,7 +199,7 @@
                                 </items>
                             </navigationBar>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JcS-md-Tky">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="573"/>
+                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="573"/>
                                 <connections>
                                     <segue destination="dpI-dt-iyM" kind="embed" id="Hwr-XR-eXH"/>
                                 </connections>
@@ -239,7 +239,7 @@
                             <constraint firstItem="XGe-BM-Sff" firstAttribute="leading" secondItem="JcS-md-Tky" secondAttribute="leading" id="kTK-ht-SWt"/>
                             <constraint firstItem="XGe-BM-Sff" firstAttribute="leading" secondItem="IzI-6N-tKN" secondAttribute="leading" id="lvL-ha-QQs"/>
                             <constraint firstItem="XGe-BM-Sff" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.895" id="zGC-5r-DiN"/>
-                            <constraint firstItem="XGe-BM-Sff" firstAttribute="leading" secondItem="JcS-md-Tky" secondAttribute="trailing" constant="-240" id="zlk-jH-gdV"/>
+                            <constraint firstItem="XGe-BM-Sff" firstAttribute="leading" secondItem="JcS-md-Tky" secondAttribute="trailing" id="zlk-jH-gdV"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="1GV-fA-MCM" appends="YES" id="yK7-Nw-Mvw"/>
@@ -664,7 +664,7 @@
                         <viewControllerLayoutGuide type="bottom" id="OBP-yg-DMA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KT9-Ls-yBM">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="573"/>
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="573"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person" translatesAutoresizingMaskIntoConstraints="NO" id="yK0-pS-doF">
@@ -680,7 +680,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8N-al-uiO">
-                                <rect key="frame" x="0.0" y="132" width="240" height="378"/>
+                                <rect key="frame" x="0.0" y="132" width="0.0" height="378"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="nWS-ua-PkK">
                                         <rect key="frame" x="44" y="0.0" width="115" height="59"/>
