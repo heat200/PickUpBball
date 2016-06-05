@@ -61,7 +61,8 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                 var x = 0
                 while x < userFriends.count {
                     let friendName = userFriends[x].valueForKey("name") as? String
-                    var urlString = "https://graph.facebook.com/" + (userFriends[x].valueForKey("id") as! String) + "/picture?type=large&redirect=false"
+                    let friendID = userFriends[x].valueForKey("id") as! String
+                    var urlString = "https://graph.facebook.com/" + friendID + "/picture?type=large&redirect=false"
                     do {
                         let dictionary = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: NSURL(string: urlString)!)!, options: .MutableLeaves)
                         let data = dictionary.objectForKey("data")!
@@ -73,14 +74,7 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                     var repScore = 0
                     var friendLocation = ""
                     do {
-                        var data = self.updateData()
-                        
-                        if data == nil {
-                            self.switchServer()
-                            data = self.updateData()
-                        } else {
-                            print("Friends List: Good 2 Go")
-                        }
+                        let data = self.updateData(friendID)
                         
                         let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
                         let checkedIn = dictionary.valueForKey("checkedIn") as! Bool
@@ -104,13 +98,13 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                     self.friendHolders += [friendHolder]
                     x += 1
                     
-                    if x == self.friendHolders.count {
+                    if x == userFriends.count {
                         self.friendsTableView?.reloadData()
+                        self.performSelector(#selector(FriendsListViewController.endRefresh), withObject: nil, afterDelay: 0.5)
                     }
                 }
             }
         })
-        self.performSelector(#selector(FriendsListViewController.endRefresh), withObject: nil, afterDelay: 0.5)
     }
     
     func switchServer() {
@@ -122,13 +116,15 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
         print("Friends List: Switching Server To " + server)
     }
     
-    func updateData() -> NSData? {
-        let urlString = "http://" + server + "/PikUpServer/users/" + (userData.valueForKey("id") as! String) + "/user.json"
+    func updateData(friendID:String) -> NSData? {
+        let urlString = "http://" + server + "/PikUpServer/users/" + friendID + "/user.json"
         print("Checking location: " + urlString)
         var returnData = NSData(contentsOfURL: NSURL(string: urlString)!)
         if returnData == nil {
             switchServer()
-            returnData = updateData()
+            returnData = updateData(friendID)
+        } else {
+            print("Friends List: Good 2 Go")
         }
         return returnData
     }

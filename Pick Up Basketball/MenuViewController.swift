@@ -128,6 +128,7 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
             switchServer()
             returnData = updateData()
         }
+        
         return returnData
     }
     
