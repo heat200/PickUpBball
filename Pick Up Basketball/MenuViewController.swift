@@ -50,12 +50,28 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         pictureFrameSize = userPicture.frame.size
         
         var urlString = "https://graph.facebook.com/" + String(FBSDKAccessToken.currentAccessToken().userID) + "/picture?type=large&redirect=false"
-        do {
-            let dictionary = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: NSURL(string: urlString)!)!, options: .MutableLeaves)
-            let data = dictionary.objectForKey("data")!
-            urlString = data.valueForKey("url") as! String
-        } catch {
-            print("Could not parse JSON: \(error)")
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let fbData = NSData(contentsOfURL: NSURL(string: urlString)!)
+            dispatch_async(dispatch_get_main_queue()) {
+                do {
+                    let dictionary = try NSJSONSerialization.JSONObjectWithData(fbData!, options: .MutableLeaves)
+                    let data = dictionary.objectForKey("data")!
+                    urlString = data.valueForKey("url") as! String
+                } catch {
+                    print("Could not parse JSON: \(error)")
+                }
+                
+                dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                    let newImage = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)?.roundImage()
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.userPicture.image = newImage
+                        print("Pic Size (After New Image): " + String(self.pictureFrameSize))
+                        print("Pic Origin (After New Image): " + String(self.pictureFrameOrigin))
+                    }
+                }
+            }
         }
         
         updateUserData()
@@ -64,16 +80,6 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         nameFrameSize = userName.frame.size
         print("Pic Size: " + String(pictureFrameSize))
         print("Pic Origin: " + String(pictureFrameOrigin))
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            let newImage = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)?.roundImage()
-            dispatch_async(dispatch_get_main_queue()) {
-                self.userPicture.image = newImage
-                print("Pic Size (After New Image): " + String(self.pictureFrameSize))
-                print("Pic Origin (After New Image): " + String(self.pictureFrameOrigin))
-            }
-        }
     }
     
     func fixLayoutIssues() {

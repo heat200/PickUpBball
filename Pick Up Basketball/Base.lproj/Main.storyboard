@@ -212,6 +212,9 @@
                                     <segue destination="hCq-DR-UwU" kind="embed" id="H8G-ym-R0s"/>
                                 </connections>
                             </containerView>
+                            <containerView hidden="YES" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fpq-84-Cs9">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
