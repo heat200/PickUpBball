@@ -9,6 +9,8 @@
 import UIKit
 
 var userFriends:AnyObject!
+var purpleColor:UIColor!
+
 
 class FriendsListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet var friendsTableView:UITableView?
@@ -19,7 +21,11 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        if purpleColor != nil {
+            refreshControl.tintColor = purpleColor
+        }
         refreshControl.addTarget(self, action: #selector(FriendsListViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
         friendsTableView!.addSubview(refreshControl)
         loadInfo()
@@ -39,7 +45,7 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func endRefresh() {
         self.refreshControl.endRefreshing()
-        print("Completed!")
+        //print("Completed!")
     }
     
     func loadInfo() {
@@ -100,7 +106,6 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                             
                             let friendHolder = FriendHolder(name: friendName!,rep: repScore,location: friendLocation,thumb: friendPicture)
                             self.friendHolders += [friendHolder]
-                            print(friendLocation)
                             
                             if x == userFriends.count {
                                 self.friendsTableView?.reloadData()
@@ -126,7 +131,7 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func updateData(friendID:String) -> NSData? {
         let urlString = "http://" + server + "/PikUpServer/users/" + friendID + "/user.json"
-        print("Checking location: " + urlString)
+        //print("Checking location: " + urlString)
         var returnData = NSData(contentsOfURL: NSURL(string: urlString)!)
         if returnData == nil {
             switchServer()
@@ -158,6 +163,10 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
         } else {
             cell.friendLocation.text = friendCell.locationName
             cell.friendLocation.textColor = cell.usualColor
+            purpleColor = cell.usualColor
+            refreshControl.tintColor = purpleColor
+            let attributedStringColor = [NSForegroundColorAttributeName : purpleColor]
+            refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh",attributes: attributedStringColor)
         }
         
         cell.friendPicture.image = friendCell.friendPic.roundImage()

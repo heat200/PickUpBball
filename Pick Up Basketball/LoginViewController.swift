@@ -23,7 +23,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
+        //print("User Logged In")
         if ((error) != nil) {
             
         } else if result.isCancelled {
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
+        //print("User Logged Out")
     }
     
     func returnUserData() {

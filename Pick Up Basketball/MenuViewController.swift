@@ -15,7 +15,7 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     
     @IBAction func signOut() {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            print("Logging out")
+            //print("Logging out")
             FBSDKAccessToken.setCurrentAccessToken(nil)
             FBSDKProfile.setCurrentProfile(nil)
             if self.presentingViewController == nil {
@@ -67,8 +67,6 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
                     let newImage = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)?.roundImage()
                     dispatch_async(dispatch_get_main_queue()) {
                         self.userPicture.image = newImage
-                        print("Pic Size (After New Image): " + String(self.pictureFrameSize))
-                        print("Pic Origin (After New Image): " + String(self.pictureFrameOrigin))
                     }
                 }
             }
@@ -78,8 +76,8 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         
         nameFrameOrigin = userName.frame.origin
         nameFrameSize = userName.frame.size
-        print("Pic Size: " + String(pictureFrameSize))
-        print("Pic Origin: " + String(pictureFrameOrigin))
+        repFrameSize = userRep.frame.size
+        repFrameOrigin = userRep.frame.origin
     }
     
     func fixLayoutIssues() {
@@ -124,13 +122,10 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
                     print("Could not parse JSON: \(error)")
                 }
                 
-                print("User is at: " + userLocation)
+                //print("User is at: " + userLocation)
                 self.userRep.text = String(repScore) + " Rep"
                 
                 self.fixLayoutIssues()
-                
-                print("Pic Size (After Updating Data): " + String(self.pictureFrameSize))
-                print("Pic Origin (After Updating Data): " + String(self.pictureFrameOrigin))
             }
         }
     }
@@ -141,12 +136,12 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         } else {
             server = "10.0.0.86"
         }
-        print("Menu: Switching Server To " + server)
+        //print("Menu: Switching Server To " + server)
     }
     
     func updateData() -> NSData? {
         let urlString = "http://" + server + "/PikUpServer/users/" + (userData.valueForKey("id") as! String) + "/user.json"
-        print("Checking location: " + urlString)
+        //print("Checking location: " + urlString)
         var returnData = NSData(contentsOfURL: NSURL(string: urlString)!)
         if returnData == nil {
             switchServer()
