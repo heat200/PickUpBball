@@ -178,4 +178,15 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return finalImage
     }
+    
+    func roundImage(frame:CGRect) -> UIImage {
+        let newImage = self.copy() as! UIImage
+        let cornerRadius = self.size.height/2
+        UIGraphicsBeginImageContextWithOptions(frame.size, false, 1.0)
+        UIBezierPath(roundedRect: frame, cornerRadius: cornerRadius).addClip()
+        newImage.drawInRect(frame)
+        let finalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return finalImage
+    }
 }

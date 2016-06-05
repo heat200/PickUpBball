@@ -46,6 +46,9 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         super.viewDidLoad()
         userName.text = userData.valueForKey("name") as? String
         
+        pictureFrameOrigin = userPicture.frame.origin
+        pictureFrameSize = userPicture.frame.size
+        
         var urlString = "https://graph.facebook.com/" + String(FBSDKAccessToken.currentAccessToken().userID) + "/picture?type=large&redirect=false"
         do {
             let dictionary = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: NSURL(string: urlString)!)!, options: .MutableLeaves)
@@ -59,17 +62,32 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         
         nameFrameOrigin = userName.frame.origin
         nameFrameSize = userName.frame.size
-        pictureFrameOrigin = userPicture.frame.origin
-        pictureFrameSize = userPicture.frame.size
-        userPicture.image = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)?.roundImage()
+        print("Pic Size: " + String(pictureFrameSize))
+        print("Pic Origin: " + String(pictureFrameOrigin))
+        
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let newImage = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)?.roundImage()
+            dispatch_async(dispatch_get_main_queue()) {
+                self.userPicture.image = newImage
+                print("Pic Size (After New Image): " + String(self.pictureFrameSize))
+                print("Pic Origin (After New Image): " + String(self.pictureFrameOrigin))
+            }
+        }
+    }
+    
+    func fixLayoutIssues() {
+        self.viewWillLayoutSubviews()
     }
     
     override func viewDidLayoutSubviews() {
-        userPicture.frame.origin = pictureFrameOrigin
-        userPicture.frame.size = pictureFrameSize
-        userRep.frame.origin = repFrameOrigin
-        userRep.frame.size = repFrameSize
-        userName.frame.origin = nameFrameOrigin
+        if repFrameOrigin != nil {
+            self.userRep.frame.origin = self.repFrameOrigin
+            self.userRep.frame.size = self.repFrameSize
+        }
+        self.userName.frame.origin = self.nameFrameOrigin
+        self.userPicture.frame.origin = self.pictureFrameOrigin
+        self.userPicture.frame.size = self.pictureFrameSize
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,32 +101,32 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     func updateUserData() {
         var repScore = 0
         var userLocation = ""
-        do {
-            var data = updateData()
-            
-            if data == nil {
-                switchServer()
-                data = updateData()
-            } else {
-                print("Menu: Good 2 Go")
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let data = self.updateData()
+            dispatch_async(dispatch_get_main_queue()) {
+                do {
+                    let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
+                    let checkedIn = dictionary.valueForKey("checkedIn") as! Bool
+                    if checkedIn {
+                        let data = dictionary.objectForKey("location")!
+                        userLocation = (data.valueForKey("name") as! String)
+                    }
+                    repScore = dictionary.valueForKey("rep") as! Int
+                    
+                } catch {
+                    print("Could not parse JSON: \(error)")
+                }
+                
+                print("User is at: " + userLocation)
+                self.userRep.text = String(repScore) + " Rep"
+                
+                self.fixLayoutIssues()
+                
+                print("Pic Size (After Updating Data): " + String(self.pictureFrameSize))
+                print("Pic Origin (After Updating Data): " + String(self.pictureFrameOrigin))
             }
-            
-            let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
-            let checkedIn = dictionary.valueForKey("checkedIn") as! Bool
-            if checkedIn {
-                let data = dictionary.objectForKey("location")!
-                userLocation = (data.valueForKey("name") as! String)
-            }
-            repScore = dictionary.valueForKey("rep") as! Int
-        } catch {
-            print("Could not parse JSON: \(error)")
         }
-        
-        print("User is at: " + userLocation)
-        userRep.text = String(repScore) + " Rep"
-        
-        repFrameOrigin = userRep.frame.origin
-        repFrameSize = userRep.frame.size
     }
     
     func switchServer() {
@@ -127,6 +145,8 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         if returnData == nil {
             switchServer()
             returnData = updateData()
+        } else {
+            print("Menu: Good 2 Go")
         }
         
         return returnData

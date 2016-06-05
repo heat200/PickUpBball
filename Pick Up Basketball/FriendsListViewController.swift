@@ -73,35 +73,43 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                     
                     var repScore = 0
                     var friendLocation = ""
-                    do {
+                    let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+                    dispatch_async(dispatch_get_global_queue(priority, 0)) {
                         let data = self.updateData(friendID)
                         
-                        let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
-                        let checkedIn = dictionary.valueForKey("checkedIn") as! Bool
-                        if checkedIn {
-                            let data = dictionary.objectForKey("location")!
-                            friendLocation = (data.valueForKey("name") as! String)
-                            if friendLocation == "" {
-                                friendLocation = "Unknown Location"
+                        var friendPicture:UIImage!
+                        friendPicture = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)!
+                        
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            // update some UI
+                            do {
+                                let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
+                                let checkedIn = dictionary.valueForKey("checkedIn") as! Bool
+                                if checkedIn {
+                                    let data = dictionary.objectForKey("location")!
+                                    friendLocation = (data.valueForKey("name") as! String)
+                                    if friendLocation == "" {
+                                        friendLocation = "Unknown Location"
+                                    }
+                                }
+                                repScore = dictionary.valueForKey("rep") as! Int
+                            } catch {
+                                print("Could not parse JSON: \(error)" + "Trying again")
                             }
+                            
+                            let friendHolder = FriendHolder(name: friendName!,rep: repScore,location: friendLocation,thumb: friendPicture)
+                            self.friendHolders += [friendHolder]
                             print(friendLocation)
+                            
+                            if x == userFriends.count {
+                                self.friendsTableView?.reloadData()
+                                self.performSelector(#selector(FriendsListViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+                            }
                         }
-                        repScore = dictionary.valueForKey("rep") as! Int
-                    } catch {
-                        print("Could not parse JSON: \(error)" + "Trying again")
                     }
                     
-                    var friendPicture:UIImage!
-                    friendPicture = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)!
-                    
-                    let friendHolder = FriendHolder(name: friendName!,rep: repScore,location: friendLocation,thumb: friendPicture)
-                    self.friendHolders += [friendHolder]
                     x += 1
-                    
-                    if x == userFriends.count {
-                        self.friendsTableView?.reloadData()
-                        self.performSelector(#selector(FriendsListViewController.endRefresh), withObject: nil, afterDelay: 0.5)
-                    }
                 }
             }
         })
