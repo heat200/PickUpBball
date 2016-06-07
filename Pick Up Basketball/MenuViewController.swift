@@ -15,11 +15,13 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     
     @IBAction func signOut() {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            //print("Logging out")
+            print("Logging out")
             FBSDKAccessToken.setCurrentAccessToken(nil)
             FBSDKProfile.setCurrentProfile(nil)
+            print(self.presentingViewController)
             if self.presentingViewController == nil {
-                self.storyboard?.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
+                let loginView = self.storyboard!.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
+                self.presentViewController(loginView, animated: true, completion: nil)
             } else {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }

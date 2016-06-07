@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func checkIfLoggedIn() {
         if (FBSDKAccessToken.currentAccessToken() != nil) {
-            //print("Logged in")
+            print("Logged in")
             FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
             
             let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":""])

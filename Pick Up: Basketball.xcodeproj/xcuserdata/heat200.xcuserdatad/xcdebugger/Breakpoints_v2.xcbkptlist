@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/LoginViewController.swift"
-            timestampString = "486669737.860932"
+            timestampString = "486968836.897319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "returnUserData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/LoginViewController.swift"
-            timestampString = "486669737.860932"
+            timestampString = "486968836.897319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "returnUserData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/LoginViewController.swift"
-            timestampString = "486669737.860932"
+            timestampString = "486968836.897319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "returnUserData()"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,13 +58,60 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/MenuViewController.swift"
-            timestampString = "486840409.309007"
+            timestampString = "486967122.717061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "updateUserData()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_Up__Basketball.MenuViewController.updateUserData () -&gt; ()"
+                  moduleName = "Pick Up: Basketball"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/heat200/Desktop/Work/App%20Dev/Pick%20Up:%20Basketball/Pick%20Up%20Basketball/MenuViewController.swift"
+                  timestampString = "486951519.66483"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_Up__Basketball.MenuViewController.(updateUserData () -&gt; ()).(closure #1)"
+                  moduleName = "Pick Up: Basketball"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/heat200/Desktop/Work/App%20Dev/Pick%20Up:%20Basketball/Pick%20Up%20Basketball/MenuViewController.swift"
+                  timestampString = "486951519.665"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Pick_Up__Basketball.MenuViewController.(updateUserData () -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "Pick Up: Basketball"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/heat200/Desktop/Work/App%20Dev/Pick%20Up:%20Basketball/Pick%20Up%20Basketball/MenuViewController.swift"
+                  timestampString = "486951519.665195"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,11 +121,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/MenuViewController.swift"
-            timestampString = "486840409.309007"
+            timestampString = "486967122.717061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "viewDidLayoutSubviews()"
             landmarkType = "5">
          </BreakpointContent>

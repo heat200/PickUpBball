@@ -12,7 +12,7 @@ var server = "10.0.0.86"
 
 class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var pageControl:UISegmentedControl!
-    @IBOutlet var settingsContainer:UIView!
+    @IBOutlet var menuContainer:UIView!
     @IBOutlet var recentViewContainer:UIView!
     @IBOutlet var hotspotsViewContainer:UIView!
     @IBOutlet var friendsViewContainer:UIView!
@@ -24,8 +24,11 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     var settingsMenuShouldShow = false
     var delegate:MainViewControllerDelegate!
     
+    @IBOutlet var menuWidthConstraint:NSLayoutConstraint!
+    @IBOutlet var friendsXOriginConstraint:NSLayoutConstraint!
+    
     @IBAction func toggleSettingsMenuVisibility() {
-        if settingsContainer.bounds.width == 0 {
+        if menuContainer.bounds.width == 0 {
             settingsMenuShouldShow = true
             menuBtn.selected = true
         } else {
@@ -68,7 +71,8 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        settingsContainer.bounds.size.width = 0
+        navbar.setBackgroundImage(UIImage(named: "barGradient"),forBarMetrics: .Default)
+        menuContainer.bounds.size.width = 0
         NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(MainViewController.scheduledAdjustments), userInfo: nil, repeats: true)
         let menuController = self.childViewControllers[3] as! MenuViewController
         menuController.delegate = self
@@ -85,61 +89,27 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     
     func scheduledAdjustments() {
         updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
-        updateViews()
     }
     
     func updateViews() {
-        let animationSpeed:CGFloat = 1
-        if settingsMenuShouldShow && settingsContainer.bounds.width < (self.view.bounds.width/3) * 2 {
-            var newFrameContainer = settingsContainer.frame
-            newFrameContainer.size.width += animationSpeed
-            settingsContainer.frame = newFrameContainer
-            
-            var newFrameStatusbar = statusbar.frame
-            newFrameStatusbar.origin.x += animationSpeed
-            statusbar.frame = newFrameStatusbar
-            
-            var newFrameNavbar = navbar.frame
-            newFrameNavbar.origin.x += animationSpeed
-            navbar.frame = newFrameNavbar
-            
-            recentViewContainer.frame.origin.x += animationSpeed
-            hotspotsViewContainer.frame.origin.x += animationSpeed
-            friendsViewContainer.frame.origin.x += animationSpeed
-            friendsListViewContainer.frame.origin.x += animationSpeed
-        } else if !settingsMenuShouldShow && settingsContainer.bounds.width > 0 {
-            var newFrameContainer = settingsContainer.frame
-            newFrameContainer.size.width -= animationSpeed
-            settingsContainer.frame = newFrameContainer
-            
-            var newFrameStatusbar = statusbar.frame
-            newFrameStatusbar.origin.x -= animationSpeed
-            statusbar.frame = newFrameStatusbar
-            
-            var newFrameNavbar = navbar.frame
-            newFrameNavbar.origin.x -= animationSpeed
-            navbar.frame = newFrameNavbar
-            
-            recentViewContainer.frame.origin.x -= animationSpeed
-            hotspotsViewContainer.frame.origin.x -= animationSpeed
-            friendsViewContainer.frame.origin.x -= animationSpeed
-            friendsListViewContainer.frame.origin.x -= animationSpeed
+        let animationSpeed:Double = 0.25
+        
+        if settingsMenuShouldShow && menuContainer.bounds.width < (self.view.bounds.width/3) * 2 {
+            let position = (self.view.bounds.width/3) * 2
+            UIView.animateWithDuration(animationSpeed, animations: {
+                //self.navbar.setBackgroundImage(UIImage(named: "barGradient2"),forBarMetrics: .Default)
+                self.menuWidthConstraint.constant = position
+                self.friendsXOriginConstraint.constant = position
+                self.view.layoutIfNeeded()
+            })
+        } else if !settingsMenuShouldShow && menuContainer.bounds.width > 0 {
+            let position:CGFloat = 0
+            UIView.animateWithDuration(animationSpeed, animations: {
+                //self.navbar.setBackgroundImage(UIImage(named: "barGradient"),forBarMetrics: .Default)
+                self.menuWidthConstraint.constant = position
+                self.friendsXOriginConstraint.constant = position
+                self.view.layoutIfNeeded()
+            })
         }
         
         if pageControl.selectedSegmentIndex == 0 && !pageControl.hidden {
@@ -174,17 +144,6 @@ extension UIImage {
         let bounds = CGRect(origin: CGPointZero, size: self.size)
         UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).addClip()
         newImage.drawInRect(bounds)
-        let finalImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return finalImage
-    }
-    
-    func roundImage(frame:CGRect) -> UIImage {
-        let newImage = self.copy() as! UIImage
-        let cornerRadius = self.size.height/2
-        UIGraphicsBeginImageContextWithOptions(frame.size, false, 1.0)
-        UIBezierPath(roundedRect: frame, cornerRadius: cornerRadius).addClip()
-        newImage.drawInRect(frame)
         let finalImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return finalImage
