@@ -12,15 +12,15 @@ class FriendActivityInfoHolder {
     var friendPic = UIImage()
     var friendName = ""
     var locationName = ""
-    var checkInDate = NSDate()
+    var checkInDate = Date()
     
     init(name: String,location: String,thumb:UIImage,dateEffective: String) {
         friendPic = thumb
         friendName = name
         locationName = location
-        let date = NSDateFormatter()
+        let date = DateFormatter()
         date.dateFormat = "MM/dd/yyyy 'at' HH:mm:ss"
-        checkInDate = date.dateFromString(dateEffective)!
+        checkInDate = date.date(from: dateEffective)!
     }
     
 }

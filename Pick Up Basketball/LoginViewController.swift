@@ -19,20 +19,20 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
         super.viewDidLoad()
         self.bottomConstraint.constant = -100
         self.bottomConstraint2.constant = 100
-        if (FBSDKAccessToken.currentAccessToken() == nil) {
+        if (FBSDKAccessToken.current() == nil) {
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
-            FBSDKProfile.enableUpdatesOnAccessTokenChange(true)
+            FBSDKProfile.enableUpdates(onAccessTokenChange: true)
         }
         let animationSpeed:Double = 1.5
-        UIView.animateWithDuration(animationSpeed, animations: {
+        UIView.animate(withDuration: animationSpeed, animations: {
             self.bottomConstraint.constant = 144
             self.bottomConstraint2.constant = 8
             self.view.layoutIfNeeded()
         })
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         //print("User Logged In")
         if ((error) != nil) {
             
@@ -45,24 +45,24 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
         }
     }
     
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         //print("User Logged Out")
     }
     
     func returnUserData() {
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":""])
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+        graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             if ((error) != nil) {
                 print("Error: \(error)")
             } else {
                 userData = result
                 //print("fetched user: " + String(result))
-                if (FBSDKAccessToken.currentAccessToken() != nil) {
+                if (FBSDKAccessToken.current() != nil) {
                     if self.presentingViewController == nil {
-                        let MainVC = self.storyboard?.instantiateViewControllerWithIdentifier("mainView") as! MainViewController
-                        self.view.window!.rootViewController?.presentViewController(MainVC, animated: true, completion: nil)
+                        let MainVC = self.storyboard?.instantiateViewController(withIdentifier: "mainView") as! MainViewController
+                        self.view.window!.rootViewController?.present(MainVC, animated: true, completion: nil)
                     } else {
-                        self.dismissViewControllerAnimated(true, completion: nil)
+                        self.dismiss(animated: true, completion: nil)
                     }
                 }
             }
@@ -74,14 +74,14 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        return UIStatusBarStyle.lightContent
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }

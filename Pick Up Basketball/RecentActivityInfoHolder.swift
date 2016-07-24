@@ -11,14 +11,14 @@ import UIKit
 class RecentActivityInfoHolder {
     var profilePic = UIImage()
     var personMet = String()
-    var dateCheckedIn = NSDate()
+    var dateCheckedIn = Date()
     
     init(location: String,thumb:UIImage,person: String,dateEffective:String) {
         profilePic = thumb
         personMet = person
-        let date = NSDateFormatter()
+        let date = DateFormatter()
         date.dateFormat = "MM/dd/yyyy 'at' HH:mm:ss"
-        dateCheckedIn = date.dateFromString(dateEffective)!
+        dateCheckedIn = date.date(from: dateEffective)!
     }
     
 }

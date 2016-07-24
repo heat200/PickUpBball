@@ -17,17 +17,17 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(FriendsViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(FriendsViewController.refresh), for: UIControlEvents.valueChanged)
         friendActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()
     }
     
-    override func viewDidAppear(animated:Bool) {
+    override func viewDidAppear(_ animated:Bool) {
         if friendActivityHolders.count == 0 {
-            let noFilesAlert = UIAlertController(title: "Feed is empty!", message: "Uh Oh, Seems you haven't added any friends or our servers are down, please come back in a bit if you believe it's on our end and not that you have no friends, thanks!", preferredStyle: .Alert)
-            noFilesAlert.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
-            presentViewController(noFilesAlert, animated: true, completion: nil)
+            let noFilesAlert = UIAlertController(title: "Feed is empty!", message: "Uh Oh, Seems you haven't added any friends or our servers are down, please come back in a bit if you believe it's on our end and not that you have no friends, thanks!", preferredStyle: .alert)
+            noFilesAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            present(noFilesAlert, animated: true, completion: nil)
         }
     }
     
@@ -37,7 +37,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     func refresh() {
         loadSampleInfo()
-        self.performSelector(#selector(FriendsViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+        self.perform(#selector(FriendsViewController.endRefresh), with: nil, afterDelay: 0.5)
     }
     
     func endRefresh() {
@@ -45,7 +45,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         print("Completed!")
     }
     
-    func runFriendActivityViewerSetup(sender:AnyObject?) {
+    func runFriendActivityViewerSetup(_ sender:AnyObject?) {
         /*
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -80,19 +80,19 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         self.friendActivityTableView?.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("Adding " + String(friendActivityHolders.count) + " Cells to the View")
         return friendActivityHolders.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.friendActivityTableView!.dequeueReusableCellWithIdentifier("friendActivityCell", forIndexPath: indexPath) as! FriendActivityCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.friendActivityTableView!.dequeueReusableCell(withIdentifier: "friendActivityCell", for: indexPath) as! FriendActivityCell
         
-        let friendActivityCell = friendActivityHolders[indexPath.row]
+        let friendActivityCell = friendActivityHolders[(indexPath as NSIndexPath).row]
         
         cell.friendName.text = friendActivityCell.friendName
         
@@ -103,7 +103,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
         
         cell.locationName.text = friendActivityCell.locationName
         cell.friendPicture.image = friendActivityCell.friendPic
-        var timePassed = (NSDate(timeIntervalSinceNow: 0).timeIntervalSinceDate(friendActivityCell.checkInDate))
+        var timePassed = (Date(timeIntervalSinceNow: 0).timeIntervalSince(friendActivityCell.checkInDate as Date))
         var timeAsString = ""
         
         if timePassed < 60 {

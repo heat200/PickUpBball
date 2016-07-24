@@ -17,17 +17,17 @@ class HotspotsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(HotspotsViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(HotspotsViewController.refresh), for: UIControlEvents.valueChanged)
         hotspotsActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()
     }
     
-    override func viewDidAppear(animated:Bool) {
+    override func viewDidAppear(_ animated:Bool) {
         if hotspotsActivityHolders.count == 0 {
-            let noFilesAlert = UIAlertController(title: "Feed is empty!", message: "Uh Oh, Seems you haven't added any hotspots or our servers are down, please come back in a bit if you believe it's on our end and not that you have no hotspotss, thanks!", preferredStyle: .Alert)
-            noFilesAlert.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
-            presentViewController(noFilesAlert, animated: true, completion: nil)
+            let noFilesAlert = UIAlertController(title: "Feed is empty!", message: "Uh Oh, Seems you haven't added any hotspots or our servers are down, please come back in a bit if you believe it's on our end and not that you have no hotspotss, thanks!", preferredStyle: .alert)
+            noFilesAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            present(noFilesAlert, animated: true, completion: nil)
         }
     }
     
@@ -37,7 +37,7 @@ class HotspotsViewController: UIViewController {
     
     func refresh() {
         loadSampleInfo()
-        self.performSelector(#selector(HotspotsViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+        self.perform(#selector(HotspotsViewController.endRefresh), with: nil, afterDelay: 0.5)
     }
     
     func endRefresh() {
@@ -45,7 +45,7 @@ class HotspotsViewController: UIViewController {
         print("Completed!")
     }
     
-    func runhotspotsActivityViewerSetup(sender:AnyObject?) {
+    func runhotspotsActivityViewerSetup(_ sender:AnyObject?) {
         /*
          let dateFormatter = NSDateFormatter()
          dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -78,20 +78,20 @@ class HotspotsViewController: UIViewController {
         self.hotspotsActivityTableView?.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("Adding " + String(hotspotsActivityHolders.count) + " Cells to the View")
         return hotspotsActivityHolders.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.hotspotsActivityTableView!.dequeueReusableCellWithIdentifier("hotspotsActivityCell", forIndexPath: indexPath) as! HotspotsActivityCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.hotspotsActivityTableView!.dequeueReusableCell(withIdentifier: "hotspotsActivityCell", for: indexPath) as! HotspotsActivityCell
         
-        let hotspotsActivityCell = hotspotsActivityHolders[indexPath.row]
+        let hotspotsActivityCell = hotspotsActivityHolders[(indexPath as NSIndexPath).row]
         
         cell.locationName.text = hotspotsActivityCell.locationName
         cell.locationAddress.text = hotspotsActivityCell.locationAddress

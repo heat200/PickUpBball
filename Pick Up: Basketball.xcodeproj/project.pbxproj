@@ -41,6 +41,7 @@
 		7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendHolder.swift; sourceTree = "<group>"; };
 		7D59F3801CFF54BB008A7C89 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		7D71948E1D3C71EB004571FF /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		7DDA957F1C7FF091007DD3D3 /* Pick Up: Basketball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pick Up: Basketball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		7DDA95811C7FF091007DD3D3 /* Pick Up: Basketball */ = {
 			isa = PBXGroup;
 			children = (
+				7D71948E1D3C71EB004571FF /* Location.gpx */,
 				7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */,
 				7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */,
 				7DE11FCF1CDECE4E0090FCB1 /* MenuViewController.swift */,
@@ -154,12 +156,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Pedro Alarcon";
 				TargetAttributes = {
 					7DDA957E1C7FF091007DD3D3 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = N4MWNVQDSJ;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -337,6 +340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PikUp.Pik-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pick Up Basketball/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -353,6 +357,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PikUp.Pik-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Pick Up Basketball/Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

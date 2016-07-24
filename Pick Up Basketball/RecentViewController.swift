@@ -17,17 +17,17 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(RecentViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(RecentViewController.refresh), for: UIControlEvents.valueChanged)
         recentActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()
     }
     
-    override func viewDidAppear(animated:Bool) {
+    override func viewDidAppear(_ animated:Bool) {
         if recentActivityHolders.count == 0 {
-            let noFilesAlert = UIAlertController(title: "Feed is empty!", message: "Uh Oh, Seems you haven't met anyone or our servers are down, please come back in a bit if you believe it's on our end and not that you have met no one while using the app, thanks!", preferredStyle: .Alert)
-            noFilesAlert.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
-            presentViewController(noFilesAlert, animated: true, completion: nil)
+            let noFilesAlert = UIAlertController(title: "Feed is empty!", message: "Uh Oh, Seems you haven't met anyone or our servers are down, please come back in a bit if you believe it's on our end and not that you have met no one while using the app, thanks!", preferredStyle: .alert)
+            noFilesAlert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            present(noFilesAlert, animated: true, completion: nil)
         }
     }
     
@@ -37,7 +37,7 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func refresh() {
         loadSampleInfo()
-        self.performSelector(#selector(RecentViewController.endRefresh), withObject: nil, afterDelay: 0.5)
+        self.perform(#selector(RecentViewController.endRefresh), with: nil, afterDelay: 0.5)
     }
     
     func endRefresh() {
@@ -46,7 +46,7 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     
-    func runRecentsActivityViewerSetup(sender:AnyObject?) {
+    func runRecentsActivityViewerSetup(_ sender:AnyObject?) {
          /*
          let dateFormatter = NSDateFormatter()
          dateFormatter.dateFormat = "MM/dd/yyyy"
@@ -80,22 +80,22 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
         self.recentActivityTableView?.reloadData()
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //print("Adding " + String(recentActivityHolders.count) + " Cells to the View")
         return recentActivityHolders.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.recentActivityTableView!.dequeueReusableCellWithIdentifier("recentActivityCell", forIndexPath: indexPath) as! RecentActivityCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.recentActivityTableView!.dequeueReusableCell(withIdentifier: "recentActivityCell", for: indexPath) as! RecentActivityCell
         
-        let recentActivityCell = recentActivityHolders[indexPath.row]
+        let recentActivityCell = recentActivityHolders[(indexPath as NSIndexPath).row]
         
         cell.profilePic.image = recentActivityCell.profilePic
-        var timePassed = (NSDate(timeIntervalSinceNow: 0).timeIntervalSinceDate(recentActivityCell.dateCheckedIn))
+        var timePassed = (Date(timeIntervalSinceNow: 0).timeIntervalSince(recentActivityCell.dateCheckedIn as Date))
         var timeAsString = ""
         
         if timePassed < 60 {

@@ -14,16 +14,16 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     @IBOutlet var userPicture:UIImageView!
     
     @IBAction func signOut() {
-        if (FBSDKAccessToken.currentAccessToken() != nil) {
+        if (FBSDKAccessToken.current() != nil) {
             print("Logging out")
-            FBSDKAccessToken.setCurrentAccessToken(nil)
-            FBSDKProfile.setCurrentProfile(nil)
+            FBSDKAccessToken.setCurrent(nil)
+            FBSDKProfile.setCurrent(nil)
             print(self.presentingViewController)
             if self.presentingViewController == nil {
-                let loginView = self.storyboard!.instantiateViewControllerWithIdentifier("loginView") as! LoginViewController
-                self.presentViewController(loginView, animated: true, completion: nil)
+                let loginView = self.storyboard!.instantiateViewController(withIdentifier: "loginView") as! LoginViewController
+                self.present(loginView, animated: true, completion: nil)
             } else {
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
@@ -36,6 +36,22 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         delegate.updateVisibility("Friends")
     }
     
+    @IBAction func showCreateEventView() {
+        delegate.updateVisibility("CreateEvent")
+    }
+    
+    @IBAction func showMessagesView() {
+        delegate.updateVisibility("Messages")
+    }
+    
+    @IBAction func showNotificationsView() {
+        delegate.updateVisibility("Notifications")
+    }
+    
+    @IBAction func showSettingsView() {
+        delegate.updateVisibility("Settings")
+    }
+    
     var delegate:MenuViewControllerDelegate!
     var pictureFrameOrigin:CGPoint!
     var pictureFrameSize:CGSize!
@@ -46,28 +62,28 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userName.text = userData.valueForKey("name") as? String
+        userName.text = userData.value(forKey: "name") as? String
         
         pictureFrameOrigin = userPicture.frame.origin
         pictureFrameSize = userPicture.frame.size
         
-        var urlString = "https://graph.facebook.com/" + String(FBSDKAccessToken.currentAccessToken().userID) + "/picture?type=large&redirect=false"
-        
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            let fbData = NSData(contentsOfURL: NSURL(string: urlString)!)
-            dispatch_async(dispatch_get_main_queue()) {
+        var urlString = "https://graph.facebook.com/" + String(FBSDKAccessToken.current().userID!) + "/picture?type=large&redirect=false"
+        print(urlString)
+        let priority = DispatchQueue.GlobalAttributes.qosDefault
+        DispatchQueue.global(attributes: priority).async {
+            let fbData = try? Data(contentsOf: URL(string: urlString)!)
+            DispatchQueue.main.async {
                 do {
-                    let dictionary = try NSJSONSerialization.JSONObjectWithData(fbData!, options: .MutableLeaves)
-                    let data = dictionary.objectForKey("data")!
-                    urlString = data.valueForKey("url") as! String
+                    let dictionary = try JSONSerialization.jsonObject(with: fbData!, options: .mutableLeaves)
+                    let data = dictionary.object(forKey: "data")!
+                    urlString = data.value(forKey: "url") as! String
                 } catch {
                     print("Could not parse JSON: \(error)")
                 }
                 
-                dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                    let newImage = UIImage(data: NSData(contentsOfURL: NSURL(string: urlString)!)!)?.roundImage()
-                    dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.global(attributes: priority).async {
+                    let newImage = UIImage(data: try! Data(contentsOf: URL(string: urlString)!))?.roundImage()
+                    DispatchQueue.main.async {
                         self.userPicture.image = newImage
                     }
                 }
@@ -101,24 +117,24 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        return UIStatusBarStyle.lightContent
     }
     
     func updateUserData() {
         var repScore = 0
         var userLocation = ""
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+        let priority = DispatchQueue.GlobalAttributes.qosDefault
+        DispatchQueue.global(attributes: priority).async {
             let data = self.updateData()
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 do {
-                    let dictionary = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves)
-                    let checkedIn = dictionary.valueForKey("checkedIn") as! Bool
+                    let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
+                    let checkedIn = dictionary.value(forKey: "checkedIn") as! Bool
                     if checkedIn {
-                        let data = dictionary.objectForKey("location")!
-                        userLocation = (data.valueForKey("name") as! String)
+                        let data = dictionary.object(forKey: "location")!
+                        userLocation = (data.value(forKey: "name") as! String)
                     }
-                    repScore = dictionary.valueForKey("rep") as! Int
+                    repScore = dictionary.value(forKey: "rep") as! Int
                     
                 } catch {
                     print("Could not parse JSON: \(error)")
@@ -133,30 +149,33 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     }
     
     func switchServer() {
-        if server == "10.0.0.86" {
+        if server == "10.0.0.91" {
             server = "66.229.197.76"
         } else {
-            server = "10.0.0.86"
+            server = "10.0.0.91"
+        }
+        
+        if atFIU {
+            server = "10.109.28.197"
         }
         //print("Menu: Switching Server To " + server)
     }
     
-    func updateData() -> NSData? {
-        let urlString = "http://" + server + "/PikUpServer/users/" + (userData.valueForKey("id") as! String) + "/user.json"
+    func updateData() -> Data? {
+        let urlString = "http://" + server + "/PikUpServer/users/" + (userData.value(forKey: "id") as! String) + "/user.json"
         //print("Checking location: " + urlString)
-        var returnData = NSData(contentsOfURL: NSURL(string: urlString)!)
+        var returnData = try? Data(contentsOf: URL(string: urlString)!)
         if returnData == nil {
             switchServer()
             returnData = updateData()
         } else {
             print("Menu: Good 2 Go")
         }
-        
         return returnData
     }
     
 }
 
 protocol MenuViewControllerDelegate {
-    func updateVisibility(PageToShow:String)
+    func updateVisibility(_ PageToShow:String)
 }

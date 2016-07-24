@@ -8,7 +8,8 @@
 
 import UIKit
 
-var server = "10.0.0.86"
+var server = "10.0.0.91"
+var atFIU = false
 
 class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var pageControl:UISegmentedControl!
@@ -17,6 +18,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var hotspotsViewContainer:UIView!
     @IBOutlet var friendsViewContainer:UIView!
     @IBOutlet var friendsListViewContainer:UIView!
+    @IBOutlet var createEventViewContainer:UIView!
     @IBOutlet var navbar:UINavigationBar!
     @IBOutlet var menuBtn:UIButton!
     @IBOutlet var statusbar:UIView!
@@ -30,50 +32,84 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBAction func toggleSettingsMenuVisibility() {
         if menuContainer.bounds.width == 0 {
             settingsMenuShouldShow = true
-            menuBtn.selected = true
+            menuBtn.isSelected = true
         } else {
             settingsMenuShouldShow = false
-            menuBtn.selected = false
+            menuBtn.isSelected = false
         }
     }
     
-    func updateVisibility(PageToShow:String) {
+    func updateVisibility(_ PageToShow:String) {
         settingsMenuShouldShow = false
-        menuBtn.selected = false
+        menuBtn.isSelected = false
         delegate.updateUserData()
         if PageToShow == "Home" {
-            pageControl.hidden = false
-            friendsListViewContainer.hidden = true
+            pageControl.isHidden = false
+            friendsListViewContainer.isHidden = true
+            createEventViewContainer.isHidden = true
         } else if PageToShow == "Friends" {
-            friendsListViewContainer.hidden = false
-            pageControl.hidden = true
+            friendsListViewContainer.isHidden = false
+            createEventViewContainer.isHidden = true
+            pageControl.isHidden = true
             navbar.backItem?.title = PageToShow
-            recentViewContainer.hidden = true
-            hotspotsViewContainer.hidden = true
-            friendsViewContainer.hidden = true
+            recentViewContainer.isHidden = true
+            hotspotsViewContainer.isHidden = true
+            friendsViewContainer.isHidden = true
+        } else if PageToShow == "CreateEvent" {
+            friendsListViewContainer.isHidden = true
+            createEventViewContainer.isHidden = false
+            pageControl.isHidden = true
+            navbar.backItem?.title = PageToShow
+            recentViewContainer.isHidden = true
+            hotspotsViewContainer.isHidden = true
+            friendsViewContainer.isHidden = true
+        } else if PageToShow == "Messages" {
+            friendsListViewContainer.isHidden = true
+            createEventViewContainer.isHidden = true
+            pageControl.isHidden = true
+            navbar.backItem?.title = PageToShow
+            recentViewContainer.isHidden = true
+            hotspotsViewContainer.isHidden = true
+            friendsViewContainer.isHidden = true
+        } else if PageToShow == "Notifications" {
+            friendsListViewContainer.isHidden = true
+            createEventViewContainer.isHidden = true
+            pageControl.isHidden = true
+            navbar.backItem?.title = PageToShow
+            recentViewContainer.isHidden = true
+            hotspotsViewContainer.isHidden = true
+            friendsViewContainer.isHidden = true
+        } else if PageToShow == "Settings" {
+            friendsListViewContainer.isHidden = true
+            createEventViewContainer.isHidden = true
+            pageControl.isHidden = true
+            navbar.backItem?.title = PageToShow
+            recentViewContainer.isHidden = true
+            hotspotsViewContainer.isHidden = true
+            friendsViewContainer.isHidden = true
         }
     }
     
     @IBAction func hideSettingsMenuVisibility() {
         settingsMenuShouldShow = false
-        menuBtn.selected = false
+        menuBtn.isSelected = false
     }
     
     @IBAction func hideSettingsMenuVisibilityViaTap() {
         settingsMenuShouldShow = false
-        menuBtn.selected = false
+        menuBtn.isSelected = false
     }
     
     @IBAction func showSettingsMenuVisibility() {
         settingsMenuShouldShow = true
-        menuBtn.selected = true
+        menuBtn.isSelected = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navbar.setBackgroundImage(UIImage(named: "barGradient"),forBarMetrics: .Default)
+        navbar.setBackgroundImage(UIImage(named: "barGradient"),for: .default)
         menuContainer.bounds.size.width = 0
-        NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(MainViewController.scheduledAdjustments), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(MainViewController.scheduledAdjustments), userInfo: nil, repeats: true)
         let menuController = self.childViewControllers[3] as! MenuViewController
         menuController.delegate = self
         self.delegate = menuController
@@ -84,7 +120,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        return UIStatusBarStyle.lightContent
     }
     
     func scheduledAdjustments() {
@@ -96,7 +132,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
         
         if settingsMenuShouldShow && menuContainer.bounds.width < (self.view.bounds.width/3) * 2 {
             let position = (self.view.bounds.width/3) * 2
-            UIView.animateWithDuration(animationSpeed, animations: {
+            UIView.animate(withDuration: animationSpeed, animations: {
                 //self.navbar.setBackgroundImage(UIImage(named: "barGradient2"),forBarMetrics: .Default)
                 self.menuWidthConstraint.constant = position
                 self.friendsXOriginConstraint.constant = position
@@ -104,7 +140,7 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
             })
         } else if !settingsMenuShouldShow && menuContainer.bounds.width > 0 {
             let position:CGFloat = 0
-            UIView.animateWithDuration(animationSpeed, animations: {
+            UIView.animate(withDuration: animationSpeed, animations: {
                 //self.navbar.setBackgroundImage(UIImage(named: "barGradient"),forBarMetrics: .Default)
                 self.menuWidthConstraint.constant = position
                 self.friendsXOriginConstraint.constant = position
@@ -112,18 +148,18 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
             })
         }
         
-        if pageControl.selectedSegmentIndex == 0 && !pageControl.hidden {
-            recentViewContainer.hidden = true
-            hotspotsViewContainer.hidden = false
-            friendsViewContainer.hidden = true
-        } else if pageControl.selectedSegmentIndex == 1 && !pageControl.hidden {
-            recentViewContainer.hidden = true
-            hotspotsViewContainer.hidden = true
-            friendsViewContainer.hidden = false
-        } else if pageControl.selectedSegmentIndex == 2 && !pageControl.hidden {
-            recentViewContainer.hidden = false
-            hotspotsViewContainer.hidden = true
-            friendsViewContainer.hidden = true
+        if pageControl.selectedSegmentIndex == 0 && !pageControl.isHidden {
+            recentViewContainer.isHidden = true
+            hotspotsViewContainer.isHidden = false
+            friendsViewContainer.isHidden = true
+        } else if pageControl.selectedSegmentIndex == 1 && !pageControl.isHidden {
+            recentViewContainer.isHidden = true
+            hotspotsViewContainer.isHidden = true
+            friendsViewContainer.isHidden = false
+        } else if pageControl.selectedSegmentIndex == 2 && !pageControl.isHidden {
+            recentViewContainer.isHidden = false
+            hotspotsViewContainer.isHidden = true
+            friendsViewContainer.isHidden = true
         }
     }
 }
@@ -141,11 +177,11 @@ extension UIImage {
         let newImage = self.copy() as! UIImage
         let cornerRadius = self.size.height/2
         UIGraphicsBeginImageContextWithOptions(self.size, false, 1.0)
-        let bounds = CGRect(origin: CGPointZero, size: self.size)
+        let bounds = CGRect(origin: CGPoint.zero, size: self.size)
         UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).addClip()
-        newImage.drawInRect(bounds)
+        newImage.draw(in: bounds)
         let finalImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return finalImage
+        return finalImage!
     }
 }

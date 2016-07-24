@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/LoginViewController.swift"
-            timestampString = "486968836.897319"
+            timestampString = "490327228.853662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "returnUserData()"
-            landmarkType = "5">
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/LoginViewController.swift"
-            timestampString = "486968836.897319"
+            timestampString = "490327228.853662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "returnUserData()"
-            landmarkType = "5">
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/LoginViewController.swift"
-            timestampString = "486968836.897319"
+            timestampString = "490327228.853662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "returnUserData()"
-            landmarkType = "5">
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/MenuViewController.swift"
-            timestampString = "486967122.717061"
+            timestampString = "490327228.853662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "updateUserData()"
-            landmarkType = "5">
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "signOut()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -121,13 +121,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pick Up Basketball/MenuViewController.swift"
-            timestampString = "486967122.717061"
+            timestampString = "490327228.853662"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "viewDidLayoutSubviews()"
-            landmarkType = "5">
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "signOut()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
