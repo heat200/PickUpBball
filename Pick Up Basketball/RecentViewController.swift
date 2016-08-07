@@ -17,7 +17,7 @@ class RecentViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(RecentViewController.refresh), for: UIControlEvents.valueChanged)
         recentActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()

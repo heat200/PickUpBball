@@ -69,8 +69,7 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
         
         var urlString = "https://graph.facebook.com/" + String(FBSDKAccessToken.current().userID!) + "/picture?type=large&redirect=false"
         print(urlString)
-        let priority = DispatchQueue.GlobalAttributes.qosDefault
-        DispatchQueue.global(attributes: priority).async {
+        DispatchQueue.global().async {
             let fbData = try? Data(contentsOf: URL(string: urlString)!)
             DispatchQueue.main.async {
                 do {
@@ -81,7 +80,7 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
                     print("Could not parse JSON: \(error)")
                 }
                 
-                DispatchQueue.global(attributes: priority).async {
+                DispatchQueue.global().async {
                     let newImage = UIImage(data: try! Data(contentsOf: URL(string: urlString)!))?.roundImage()
                     DispatchQueue.main.async {
                         self.userPicture.image = newImage
@@ -115,16 +114,15 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    /*
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
-    
+    */
     func updateUserData() {
         var repScore = 0
         var userLocation = ""
-        let priority = DispatchQueue.GlobalAttributes.qosDefault
-        DispatchQueue.global(attributes: priority).async {
+        DispatchQueue.global().async {
             let data = self.updateData()
             DispatchQueue.main.async {
                 do {
@@ -151,8 +149,10 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     func switchServer() {
         if server == "10.0.0.91" {
             server = "66.229.197.76"
-        } else {
+        } else if server == "10.0.0.86" {
             server = "10.0.0.91"
+        } else {
+            server = "10.0.0.86"
         }
         
         if atFIU {

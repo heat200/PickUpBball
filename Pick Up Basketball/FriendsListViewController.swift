@@ -22,7 +22,7 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
         
-        refreshControl.attributedTitle = AttributedString(string: "Pull to Refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
         if purpleColor != nil {
             refreshControl.tintColor = purpleColor
         }
@@ -79,8 +79,7 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                     
                     var repScore = 0
                     var friendLocation = ""
-                    let priority = DispatchQueue.GlobalAttributes.qosDefault
-                    DispatchQueue.global(attributes: priority).async {
+                    DispatchQueue.global().async {
                         let data = self.updateData(friendID)
                         
                         var friendPicture:UIImage!
@@ -123,8 +122,10 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
     func switchServer() {
         if server == "10.0.0.91" {
             server = "66.229.197.76"
-        } else {
+        } else if server == "10.0.0.86" {
             server = "10.0.0.91"
+        } else {
+            server = "10.0.0.86"
         }
         
         if atFIU {
@@ -163,14 +164,14 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
         
         if friendCell.locationName == "Not Checked In" || friendCell.locationName == "" {
             cell.friendLocation.text = "Not Checked In"
-            cell.friendLocation.textColor = UIColor.gray()
+            cell.friendLocation.textColor = UIColor.gray
         } else {
             cell.friendLocation.text = friendCell.locationName
             cell.friendLocation.textColor = cell.usualColor
             purpleColor = cell.usualColor
             refreshControl.tintColor = purpleColor
             let attributedStringColor = [NSForegroundColorAttributeName : purpleColor]
-            refreshControl.attributedTitle = AttributedString(string: "Pull To Refresh")
+            refreshControl.attributedTitle = NSAttributedString(string: "Pull To Refresh")
         }
         
         cell.friendPicture.image = friendCell.friendPic.roundImage()

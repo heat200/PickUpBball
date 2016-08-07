@@ -13,6 +13,7 @@
 		7D59F37D1CFF5467008A7C89 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */; };
 		7D59F37F1CFF54A5008A7C89 /* FriendHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */; };
 		7D59F3811CFF54BB008A7C89 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F3801CFF54BB008A7C89 /* FriendCell.swift */; };
+		7DCA9EE31D46DD3C009E34A3 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCA9EE21D46DD3C009E34A3 /* CreateEventViewController.swift */; };
 		7DDA95831C7FF091007DD3D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */; };
 		7DDA95851C7FF091007DD3D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */; };
 		7DDA95881C7FF091007DD3D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDA95861C7FF091007DD3D3 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendHolder.swift; sourceTree = "<group>"; };
 		7D59F3801CFF54BB008A7C89 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		7D71948E1D3C71EB004571FF /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		7DCA9EE21D46DD3C009E34A3 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		7DDA957F1C7FF091007DD3D3 /* Pick Up: Basketball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pick Up: Basketball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				7D59F3801CFF54BB008A7C89 /* FriendCell.swift */,
 				7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */,
 				7DE11FC91CDEC6510090FCB1 /* ProfileViewController.swift */,
+				7DCA9EE21D46DD3C009E34A3 /* CreateEventViewController.swift */,
 				7DDA95961C7FFD62007DD3D3 /* MapViewController.swift */,
 				7DDA95861C7FF091007DD3D3 /* Main.storyboard */,
 				7DDA958B1C7FF091007DD3D3 /* LaunchScreen.storyboard */,
@@ -219,6 +222,7 @@
 				7DE891101CF5BE78000F80F8 /* RecentActivityCell.swift in Sources */,
 				7DE8910A1CF59852000F80F8 /* FriendActivityCell.swift in Sources */,
 				7DE11FD21CDECFA80090FCB1 /* MainViewController.swift in Sources */,
+				7DCA9EE31D46DD3C009E34A3 /* CreateEventViewController.swift in Sources */,
 				7D59F37F1CFF54A5008A7C89 /* FriendHolder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

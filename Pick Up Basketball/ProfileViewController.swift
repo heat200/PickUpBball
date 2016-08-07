@@ -15,22 +15,17 @@ class ProfileViewController: UIViewController {
     
     var pictureFrameOrigin:CGPoint!
     var pictureFrameSize:CGSize!
-    var nameFrameOrigin:CGPoint!
-    var nameFrameSize:CGSize!
-    var repFrameOrigin:CGPoint!
-    var repFrameSize:CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         userName.text = userData.value(forKey: "name") as? String
         
-        pictureFrameOrigin = userPicture.frame.origin
-        pictureFrameSize = userPicture.frame.size
+        //pictureFrameOrigin = userPicture.frame.origin
+        //pictureFrameSize = userPicture.frame.size
         
         var urlString = "https://graph.facebook.com/" + String(FBSDKAccessToken.current().userID!) + "/picture?type=large&redirect=false"
         print(urlString)
-        let priority = DispatchQueue.GlobalAttributes.qosDefault
-        DispatchQueue.global(attributes: priority).async {
+        DispatchQueue.global().async {
             let fbData = try? Data(contentsOf: URL(string: urlString)!)
             DispatchQueue.main.async {
                 do {
@@ -41,7 +36,7 @@ class ProfileViewController: UIViewController {
                     print("Could not parse JSON: \(error)")
                 }
                 
-                DispatchQueue.global(attributes: priority).async {
+                DispatchQueue.global().async {
                     let newImage = UIImage(data: try! Data(contentsOf: URL(string: urlString)!))?.roundImage()
                     DispatchQueue.main.async {
                         self.userPicture.image = newImage
@@ -51,11 +46,6 @@ class ProfileViewController: UIViewController {
         }
         
         updateUserData()
-        
-        nameFrameOrigin = userName.frame.origin
-        nameFrameSize = userName.frame.size
-        repFrameSize = userRep.frame.size
-        repFrameOrigin = userRep.frame.origin
     }
     
     func fixLayoutIssues() {
@@ -63,21 +53,15 @@ class ProfileViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        if repFrameOrigin != nil {
-            self.userRep.frame.origin = self.repFrameOrigin
-            self.userRep.frame.size = self.repFrameSize
-        }
-        self.userName.frame.origin = self.nameFrameOrigin
-        self.userPicture.frame.origin = self.pictureFrameOrigin
-        self.userPicture.frame.size = self.pictureFrameSize
+        //self.userPicture.frame.origin = self.pictureFrameOrigin
+        //self.userPicture.frame.size = self.pictureFrameSize
     }
     
     
     func updateUserData() {
         var repScore = 0
         var userLocation = ""
-        let priority = DispatchQueue.GlobalAttributes.qosDefault
-        DispatchQueue.global(attributes: priority).async {
+        DispatchQueue.global().async {
             let data = self.updateData()
             DispatchQueue.main.async {
                 do {
@@ -104,8 +88,10 @@ class ProfileViewController: UIViewController {
     func switchServer() {
         if server == "10.0.0.91" {
             server = "66.229.197.76"
-        } else {
+        } else if server == "10.0.0.86" {
             server = "10.0.0.91"
+        } else {
+            server = "10.0.0.86"
         }
         
         if atFIU {
@@ -130,8 +116,9 @@ class ProfileViewController: UIViewController {
     @IBAction func dismissProfilePage() {
         self.dismiss(animated: true, completion: nil)
     }
-    
+    /*
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
+    */
 }

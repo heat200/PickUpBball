@@ -32,7 +32,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
         })
     }
     
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         //print("User Logged In")
         if ((error) != nil) {
             
@@ -72,11 +72,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    /*
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
-    
+    */
     func textFieldDidEndEditing(_ textField: UITextField) {
         
     }

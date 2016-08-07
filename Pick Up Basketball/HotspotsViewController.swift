@@ -17,7 +17,7 @@ class HotspotsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(HotspotsViewController.refresh), for: UIControlEvents.valueChanged)
         hotspotsActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()

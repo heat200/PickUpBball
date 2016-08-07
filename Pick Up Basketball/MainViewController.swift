@@ -118,11 +118,11 @@ class MainViewController: UIViewController, MenuViewControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    /*
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
-    
+    */
     func scheduledAdjustments() {
         updateViews()
     }

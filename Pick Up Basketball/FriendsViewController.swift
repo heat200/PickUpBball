@@ -17,7 +17,7 @@ class FriendsViewController: UIViewController,UITableViewDelegate,UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = AttributedString(string: "Pull to refresh")
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(FriendsViewController.refresh), for: UIControlEvents.valueChanged)
         friendActivityTableView!.addSubview(refreshControl)
         loadSampleInfo()
