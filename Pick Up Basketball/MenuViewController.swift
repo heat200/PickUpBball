@@ -74,8 +74,8 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
             DispatchQueue.main.async {
                 do {
                     let dictionary = try JSONSerialization.jsonObject(with: fbData!, options: .mutableLeaves)
-                    let data = dictionary.object(forKey: "data")!
-                    urlString = data.value(forKey: "url") as! String
+                    let data = (dictionary as AnyObject).object(forKey: "data")!
+                    urlString = (data as AnyObject).value(forKey: "url") as! String
                 } catch {
                     print("Could not parse JSON: \(error)")
                 }
@@ -114,11 +114,7 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    /*
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
-    */
+    
     func updateUserData() {
         var repScore = 0
         var userLocation = ""
@@ -127,12 +123,12 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
             DispatchQueue.main.async {
                 do {
                     let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
-                    let checkedIn = dictionary.value(forKey: "checkedIn") as! Bool
+                    let checkedIn = (dictionary as AnyObject).value(forKey: "checkedIn") as! Bool
                     if checkedIn {
-                        let data = dictionary.object(forKey: "location")!
-                        userLocation = (data.value(forKey: "name") as! String)
+                        let data = (dictionary as AnyObject).object(forKey: "location")!
+                        userLocation = ((data as AnyObject).value(forKey: "name") as! String)
                     }
-                    repScore = dictionary.value(forKey: "rep") as! Int
+                    repScore = (dictionary as AnyObject).value(forKey: "rep") as! Int
                     
                 } catch {
                     print("Could not parse JSON: \(error)")
@@ -147,18 +143,13 @@ class MenuViewController: UIViewController, MainViewControllerDelegate {
     }
     
     func switchServer() {
-        if server == "10.0.0.91" {
-            server = "66.229.197.76"
-        } else if server == "10.0.0.86" {
+        if server == "10.0.0.86" {
             server = "10.0.0.91"
-        } else {
+        } else if server == "10.0.0.91" {
             server = "10.0.0.86"
         }
         
-        if atFIU {
-            server = "10.109.28.197"
-        }
-        //print("Menu: Switching Server To " + server)
+        print("Menu: Switching Server To " + server)
     }
     
     func updateData() -> Data? {

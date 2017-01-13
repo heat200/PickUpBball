@@ -33,11 +33,11 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
     }
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        //print("User Logged In")
+        print("User Logged In")
         if ((error) != nil) {
-            
+            print(error)
         } else if result.isCancelled {
-            
+            print("NVM")
         } else {
             if result.grantedPermissions.contains("email") && result.grantedPermissions.contains("user_friends") && result.grantedPermissions.contains("public_profile") {
                 self.returnUserData()
@@ -53,10 +53,10 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":""])
         graphRequest.start(completionHandler: { (connection, result, error) -> Void in
             if ((error) != nil) {
-                print("Error: \(error)")
+                print("Error:" + String(describing: error))
             } else {
-                userData = result
-                //print("fetched user: " + String(result))
+                userData = result as AnyObject!
+                print("fetched user: " + String(describing: result))
                 if (FBSDKAccessToken.current() != nil) {
                     if self.presentingViewController == nil {
                         let MainVC = self.storyboard?.instantiateViewController(withIdentifier: "mainView") as! MainViewController
@@ -72,11 +72,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate, FBSDKLoginButto
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    /*
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
-    }
-    */
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
     }

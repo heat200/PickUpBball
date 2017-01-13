@@ -8,7 +8,7 @@
 
 import UIKit
 
-var userFriends:AnyObject!
+var userFriends:NSArray!
 var purpleColor:UIColor!
 
 
@@ -55,7 +55,7 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
             if ((error) != nil) {
                 print("Error: \(error)")
             } else {
-                userFriends = result?.value(forKey: "data")
+                userFriends = (result as! NSDictionary).value(forKey: "data") as! NSArray
                 self.friendHolders = [FriendHolder]()
                 
                 if userFriends == nil {
@@ -66,13 +66,13 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                 
                 var x = 0
                 while x < userFriends.count {
-                    let friendName = userFriends[x].value(forKey: "name") as? String
-                    let friendID = userFriends[x].value(forKey: "id") as! String
+                    let friendName = (userFriends[x] as AnyObject).object(forKey: "name") as? String
+                    let friendID = (userFriends[x] as AnyObject).object(forKey: "id") as! String
                     var urlString = "https://graph.facebook.com/" + friendID + "/picture?type=large&redirect=false"
                     do {
                         let dictionary = try JSONSerialization.jsonObject(with: Data(contentsOf: URL(string: urlString)!), options: .mutableLeaves)
-                        let data = dictionary.object(forKey: "data")!
-                        urlString = data.value(forKey: "url") as! String
+                        let data = (dictionary as AnyObject).object(forKey: "data")!
+                        urlString = (data as AnyObject).value(forKey: "url") as! String
                     } catch {
                         print("Could not parse JSON: \(error)")
                     }
@@ -90,15 +90,15 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
                             // update some UI
                             do {
                                 let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
-                                let checkedIn = dictionary.value(forKey: "checkedIn") as! Bool
+                                let checkedIn = (dictionary as AnyObject).value(forKey: "checkedIn") as! Bool
                                 if checkedIn {
-                                    let data = dictionary.object(forKey: "location")!
-                                    friendLocation = (data.value(forKey: "name") as! String)
+                                    let data = (dictionary as AnyObject).object(forKey: "location")!
+                                    friendLocation = ((data as AnyObject).value(forKey: "name") as! String)
                                     if friendLocation == "" {
                                         friendLocation = "Unknown Location"
                                     }
                                 }
-                                repScore = dictionary.value(forKey: "rep") as! Int
+                                repScore = (dictionary as AnyObject).value(forKey: "rep") as! Int
                             } catch {
                                 print("Could not parse JSON: \(error)" + "Trying again")
                             }
@@ -128,9 +128,6 @@ class FriendsListViewController: UIViewController,UITableViewDelegate,UITableVie
             server = "10.0.0.86"
         }
         
-        if atFIU {
-            server = "10.109.28.197"
-        }
         print("Friends List: Switching Server To " + server)
     }
     

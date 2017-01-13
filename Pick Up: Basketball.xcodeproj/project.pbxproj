@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D2E34881CFDD978003A542E /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */; };
-		7D2E34891CFDD978003A542E /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */; };
-		7D48DF601D012CFD000B41AF /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D48DF5F1D012CFD000B41AF /* Bolts.framework */; };
 		7D59F37D1CFF5467008A7C89 /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */; };
 		7D59F37F1CFF54A5008A7C89 /* FriendHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */; };
 		7D59F3811CFF54BB008A7C89 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D59F3801CFF54BB008A7C89 /* FriendCell.swift */; };
+		7D907CA71E28086A00671ECC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D907CA41E28086A00671ECC /* Bolts.framework */; };
+		7D907CA81E28086A00671ECC /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D907CA51E28086A00671ECC /* FBSDKCoreKit.framework */; };
+		7D907CA91E28086A00671ECC /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D907CA61E28086A00671ECC /* FBSDKLoginKit.framework */; };
 		7DCA9EE31D46DD3C009E34A3 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DCA9EE21D46DD3C009E34A3 /* CreateEventViewController.swift */; };
 		7DDA95831C7FF091007DD3D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */; };
 		7DDA95851C7FF091007DD3D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DDA95841C7FF091007DD3D3 /* LoginViewController.swift */; };
@@ -35,14 +35,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7D2633571CFDD9E900AA8344 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Pick Up Basketball/Bridging-Header.h"; sourceTree = "<group>"; };
-		7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		7D48DF5F1D012CFD000B41AF /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		7D59F37C1CFF5467008A7C89 /* FriendsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
 		7D59F37E1CFF54A5008A7C89 /* FriendHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendHolder.swift; sourceTree = "<group>"; };
 		7D59F3801CFF54BB008A7C89 /* FriendCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
 		7D71948E1D3C71EB004571FF /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		7D907CA41E28086A00671ECC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		7D907CA51E28086A00671ECC /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		7D907CA61E28086A00671ECC /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		7DB6E9821E21EAF900F43A77 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		7DCA9EE21D46DD3C009E34A3 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		7DDA957F1C7FF091007DD3D3 /* Pick Up: Basketball.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pick Up: Basketball.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDA95821C7FF091007DD3D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -71,9 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D48DF601D012CFD000B41AF /* Bolts.framework in Frameworks */,
-				7D2E34881CFDD978003A542E /* FBSDKCoreKit.framework in Frameworks */,
-				7D2E34891CFDD978003A542E /* FBSDKLoginKit.framework in Frameworks */,
+				7D907CA71E28086A00671ECC /* Bolts.framework in Frameworks */,
+				7D907CA81E28086A00671ECC /* FBSDKCoreKit.framework in Frameworks */,
+				7D907CA91E28086A00671ECC /* FBSDKLoginKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,10 +83,10 @@
 		7DDA95761C7FF091007DD3D3 = {
 			isa = PBXGroup;
 			children = (
-				7D2633571CFDD9E900AA8344 /* Bridging-Header.h */,
-				7D48DF5F1D012CFD000B41AF /* Bolts.framework */,
-				7D2E34861CFDD978003A542E /* FBSDKCoreKit.framework */,
-				7D2E34871CFDD978003A542E /* FBSDKLoginKit.framework */,
+				7DB6E9821E21EAF900F43A77 /* Bridge-Header.h */,
+				7D907CA41E28086A00671ECC /* Bolts.framework */,
+				7D907CA51E28086A00671ECC /* FBSDKCoreKit.framework */,
+				7D907CA61E28086A00671ECC /* FBSDKLoginKit.framework */,
 				7DDA95811C7FF091007DD3D3 /* Pick Up: Basketball */,
 				7DDA95801C7FF091007DD3D3 /* Products */,
 			);
@@ -159,7 +159,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Pedro Alarcon";
 				TargetAttributes = {
 					7DDA957E1C7FF091007DD3D3 = {
@@ -262,8 +262,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -307,8 +309,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -337,13 +341,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../../FacebookSDK\"";
+				FRAMEWORK_SEARCH_PATHS = "/Users/heat200/FacebookSDK/**";
 				INFOPLIST_FILE = "$(SRCROOT)/Pick Up Basketball/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PikUp.Pik-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pick Up Basketball/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -354,13 +358,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/../../../../FacebookSDK\"";
+				FRAMEWORK_SEARCH_PATHS = "/Users/heat200/FacebookSDK/**";
 				INFOPLIST_FILE = "$(SRCROOT)/Pick Up Basketball/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.PikUp.Pik-Up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Pick Up Basketball/Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridge-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

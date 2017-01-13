@@ -13,16 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        if !atFIU {
-            let defaults = UserDefaults.standard
-            
-            if let serverToCheck = defaults.string(forKey: userDefaults.lastServer) {
-                server = serverToCheck
-                print("Will Load From Last Server: " + server)
-            }
+        application.statusBarStyle = .lightContent
+        
+        let defaults = UserDefaults.standard
+        
+        if let serverToCheck = defaults.string(forKey: userDefaults.lastServer) {
+            server = serverToCheck
+            print("Will Load From Last Server: " + server)
         }
         
         let ready = FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -30,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return ready
     }
     
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(
             application,
             open: url,
@@ -58,12 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        if !atFIU {
-            let defaults = UserDefaults.standard
-            
-            defaults.setValue(server, forKey: userDefaults.lastServer)
-            defaults.synchronize()
-        }
+        let defaults = UserDefaults.standard
+        
+        defaults.setValue(server, forKey: userDefaults.lastServer)
+        defaults.synchronize()
     }
 
     func checkIfLoggedIn() {
@@ -77,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if ((error) != nil) {
                     print("Error: \(error)")
                 } else {
-                    userData = result
+                    userData = result as AnyObject!
                     //print("fetched user: " + String(result))
                     if (FBSDKAccessToken.current() != nil) {
                         self.window!.rootViewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "mainView")as? MainViewController

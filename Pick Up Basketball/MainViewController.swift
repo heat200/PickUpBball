@@ -8,8 +8,7 @@
 
 import UIKit
 
-var server = "10.0.0.91"
-var atFIU = false
+var server = "10.0.0.86"
 
 class MainViewController: UIViewController, MenuViewControllerDelegate {
     @IBOutlet var pageControl:UISegmentedControl!

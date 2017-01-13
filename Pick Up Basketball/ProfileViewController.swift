@@ -30,8 +30,8 @@ class ProfileViewController: UIViewController {
             DispatchQueue.main.async {
                 do {
                     let dictionary = try JSONSerialization.jsonObject(with: fbData!, options: .mutableLeaves)
-                    let data = dictionary.object(forKey: "data")!
-                    urlString = data.value(forKey: "url") as! String
+                    let data = (dictionary as AnyObject).object(forKey: "data")!
+                    urlString = (data as AnyObject).value(forKey: "url") as! String
                 } catch {
                     print("Could not parse JSON: \(error)")
                 }
@@ -66,12 +66,12 @@ class ProfileViewController: UIViewController {
             DispatchQueue.main.async {
                 do {
                     let dictionary = try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
-                    let checkedIn = dictionary.value(forKey: "checkedIn") as! Bool
+                    let checkedIn = (dictionary as AnyObject).value(forKey: "checkedIn") as! Bool
                     if checkedIn {
-                        let data = dictionary.object(forKey: "location")!
-                        userLocation = (data.value(forKey: "name") as! String)
+                        let data = (dictionary as AnyObject).object(forKey: "location")!
+                        userLocation = ((data as AnyObject).value(forKey: "name") as! String)
                     }
-                    repScore = dictionary.value(forKey: "rep") as! Int
+                    repScore = (dictionary as AnyObject).value(forKey: "rep") as! Int
                     
                 } catch {
                     print("Could not parse JSON: \(error)")
